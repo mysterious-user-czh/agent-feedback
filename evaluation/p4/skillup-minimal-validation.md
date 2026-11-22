@@ -16,6 +16,6 @@
 - 统一 MCP server 名 `agent-feedback`，四个工具为 feedback_start／event／label／report。
 - SKILL.md 明确 live／imported、outcome rollup、unknown 和禁止自动改路由。
 - 新增宿主配置参考及 `docs/installation.md`，包含版本、依赖、环境变量和卸载边界。
-- `dist/agent-feedback.skill` 含 SKILL.md 与 MCP 配置参考，ZIP CRC 校验通过；SHA-256 `b6fbf57823474e868a13354725cf78f6eba55175327d3eb7a7807fc56fb5441c`。
+- 历史 P4.2 批次的 `dist/agent-feedback.skill` 含 SKILL.md 与 MCP 配置参考，ZIP CRC 校验通过；当时 SHA-256 为 `b6fbf57823474e868a13354725cf78f6eba55175327d3eb7a7807fc56fb5441c`。这不是 0.11.1／0.11.2 当前附件的校验值；当前值以对应 Release 为准。
 
 这只是可分发的 Skill 引导包；Python 核心和 MCP 仍需按安装文档安装，不能把复制 SKILL.md 当作完整产品安装。

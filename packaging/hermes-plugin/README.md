@@ -1,4 +1,4 @@
-# Hermes agent-feedback 一键安装包（0.11.1）
+# Hermes agent-feedback 一键安装包（0.11.2）
 
 ## 安装
 

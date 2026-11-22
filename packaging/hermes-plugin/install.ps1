@@ -55,7 +55,7 @@ $wheel = Get-ChildItem (Join-Path $payload 'agent_feedback_local-*.whl') | Selec
 if (-not $wheel) { throw 'Bundled wheel is missing.' }
 & $venvPython -m pip install ("{0}[mcp]" -f $wheel.FullName)
 if ($LASTEXITCODE -ne 0) { throw 'Python dependency installation failed.' }
-& $venvPython -c "import agent_feedback; assert agent_feedback.__version__ == '0.11.1'"
+& $venvPython -c "import agent_feedback; assert agent_feedback.__version__ == '0.11.2'"
 if ($LASTEXITCODE -ne 0) { throw 'Installed package version verification failed.' }
 
 $contracts = Join-Path $InstallRoot 'contracts.json'
@@ -92,14 +92,14 @@ try {
         $collectorStarted = $true
     }
     $manifest = @{
-        version = '0.11.1'; hermes_home = $HermesHome; hermes_bin = $HermesBin
+        version = '0.11.2'; hermes_home = $HermesHome; hermes_bin = $HermesBin
         install_root = $InstallRoot; database = $db; contracts = $contracts
         skill = $skillTarget; config_backup = $backup; auto_collector = (-not $NoAutoCollector)
         installed_at = (Get-Date).ToUniversalTime().ToString('o')
     } | ConvertTo-Json -Depth 3
     Set-Content (Join-Path $InstallRoot 'install.json') $manifest -Encoding UTF8
     Write-Host ''
-    Write-Host 'agent-feedback 0.11.1 installed and MCP connection verified.' -ForegroundColor Green
+    Write-Host 'agent-feedback 0.11.2 installed and MCP connection verified.' -ForegroundColor Green
     Write-Host "Hermes Home: $HermesHome"
     Write-Host "Data: $db"
     Write-Host "Automatic collector: $(-not $NoAutoCollector)"

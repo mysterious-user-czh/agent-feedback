@@ -1,4 +1,16 @@
-# P4 最小产品闭环最终验收（0.11.1）
+# P4 最小产品闭环验收与内容修正
+
+## 0.11.2 内容修正
+
+本版不宣称新的路由或语义质量提升，只修正公开交付内容：
+
+- 基础示例补齐 `process_result`、成功工具结果和 `artifact_source=live`，实际运行通过；新增独立回归测试防止示例再次失效。
+- `examples/report.md` 由当前代码重新生成，包含筛选统计、工具失败／取消统计和五维状态。
+- 补齐 0.11.1 的公开发布审计与 manifest 副本；历史 Skill 哈希明确标注为早期 P4.2 批次，不再与当前附件混淆。
+- README 重组为用途、边界、下载安装、最小工作流和证据索引；“跨 Agent”和 Hermes 切段规则版本的适用范围就近说明。
+- 82/82 unittest、独立 MCP stdio 4 工具全链路和 34 条 P3 黄金回放通过。0.11.1 已发布附件保持不变。
+
+---
 
 ## 0.11.1 结论口径
 
@@ -53,7 +65,7 @@
 | 最终代码回归 | 69/69 unittest OK；独立 MCP stdio 全链路通过；P3 黄金回放 34/34 覆盖、33 判定正确、1 unknown | 本报告与任务日志 |
 | 干净通用 Host 交付验收 | wheel 非 editable 安装 0.10.1；Skill 2 文件与 CRC、MCP 全链路、SessionResult 导入均通过；受控 TEMP 残留 0；不含 skill-up 或真实 Hermes 任务 | `clean-delivery-validation.json` |
 | 原始阻塞问题复验 | self_reported＋live、observed＋unknown 两种输入均被拒；旧数据绕过时成功 label 仍被拒，artifact／outcome=unknown | 本报告与任务日志 |
-| 发布内容隐私与完整性 | 发布 ZIP 和 Skill 扫描真实会话 ID、Windows 绝对路径、密钥、敏感文件名均为 0；无数据库、validation、重复条目或缓存 | `dist/release-manifest.json` |
+| 发布内容隐私与完整性 | 发布 ZIP 和 Skill 扫描真实会话 ID、Windows 绝对路径、密钥、敏感文件名均为 0；无数据库、validation、重复条目或缓存 | `release-manifest-v0111.json` |
 
 ## 回归预算与重复性
 

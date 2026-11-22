@@ -6,6 +6,6 @@ from .service import FeedbackService
 try:
     __version__ = version("agent-feedback-local")
 except PackageNotFoundError:
-    __version__ = "0.11.1"
+    __version__ = "0.11.2"
 
 __all__ = ["FeedbackService"]

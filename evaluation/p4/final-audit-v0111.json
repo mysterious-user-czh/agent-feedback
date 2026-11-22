@@ -1,0 +1,37 @@
+{
+  "version": "0.11.1",
+  "audit_scope": "Recovered public source and the four unchanged v0.11.1 release artifacts",
+  "source_tests": {
+    "unittest": "81/81 passed",
+    "mcp_stdio": "4 tools; start, event, label and report chain passed"
+  },
+  "artifacts": [
+    {
+      "name": "agent-feedback-v0.11.1.zip",
+      "entries": 128,
+      "sha256": "3f6b79e5fbb4eee2fda2a881713267ffca9d6705a63b006c5e355036bc30b17d"
+    },
+    {
+      "name": "agent_feedback_local-0.11.1-py3-none-any.whl",
+      "entries": 24,
+      "sha256": "96e3a682c1d1fe60e0d6a9c7f70ae5fa11bf269c8744d5a4be73d621a64774a4"
+    },
+    {
+      "name": "hermes-agent-feedback-plugin-v0.11.1.zip",
+      "entries": 12,
+      "sha256": "e1d471c321135dda726484578136c0f70b7d98de1b47a38f4d965a04b1264b5f"
+    },
+    {
+      "name": "agent-feedback.skill",
+      "entries": 2,
+      "sha256": "35edbff01de9dbcc7936eff12e2841ba312504475ce88d79e4dd235ea5c73734"
+    }
+  ],
+  "checks": {
+    "zip_crc": "pass",
+    "duplicate_entries": 0,
+    "privacy_scan": "pass",
+    "forbidden_content": "validation, credentials, live databases, raw traces, virtualenvs and caches excluded"
+  },
+  "note": "This public audit record was reconstructed from the completed release verification output; it does not contain private validation evidence."
+}

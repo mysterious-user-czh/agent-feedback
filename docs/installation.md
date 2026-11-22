@@ -1,5 +1,14 @@
 # 安装、集成与卸载
 
+## 发布包
+
+从 [v0.11.2 Release](https://github.com/mysterious-user-czh/agent-feedback/releases/tag/v0.11.2) 选择：
+
+- Hermes Windows 用户：`hermes-agent-feedback-plugin-v0.11.2.zip`，按包内 README 安装；
+- 通用宿主或开发者：`agent-feedback-v0.11.2.zip`，包含源码、示例和脱敏评估；
+- 只需要 Python 包：`agent_feedback_local-0.11.2-py3-none-any.whl`；
+- 只需要 Skill 引导：`agent-feedback.skill`，但它不包含 Python 核心和 MCP，不能单独完成安装。
+
 ## 核心与 MCP
 
 要求 Windows／Linux／macOS、Python 3.10+。在交付目录执行：
@@ -13,7 +22,7 @@ python -m venv .venv
 
 Linux／macOS 使用 `.venv/bin/python`。将 `skill/agent-feedback` 复制到宿主 Agent 的 Skills 目录，并按该目录中的 `references/mcp-config.md` 注册同名 MCP server：`agent-feedback`。不要写成 `agent_feedback_mcp`。
 
-支持版本：当前包 0.11.1 的事件协议，Python ≥3.10，`mcp>=1.12,<3`。数据库默认 `~/.agent-feedback/feedback.db`，生产使用显式 `AGENT_FEEDBACK_DB`。旧版切段数据库不能直接复用。
+支持版本：当前包 0.11.2 的事件协议，Python ≥3.10，`mcp>=1.12,<3`。数据库默认 `~/.agent-feedback/feedback.db`，生产使用显式 `AGENT_FEEDBACK_DB`。旧版切段数据库不能直接复用。
 
 ## Hermes 自动采集
 
@@ -30,7 +39,7 @@ MLflow 不是核心或 MCP 的运行依赖。只在项目虚拟环境中按需�
 
 ```bash
 .venv/Scripts/python -m pip install -e ".[mlflow]"
-agent-feedback track-skillup <RESULT_JSON> --tracking-uri file:///<LOCAL_TRACKING_DIR> --artifact-root <LOCAL_ARTIFACT_DIR> --experiment agent-feedback --code-version 0.11.1 --metadata '{"candidate":"after","config_hash":"<HASH>","skill_tree_hash":"<HASH>","model_version":"unknown"}'
+agent-feedback track-skillup <RESULT_JSON> --tracking-uri file:///<LOCAL_TRACKING_DIR> --artifact-root <LOCAL_ARTIFACT_DIR> --experiment agent-feedback --code-version 0.11.2 --metadata '{"candidate":"after","config_hash":"<HASH>","skill_tree_hash":"<HASH>","model_version":"unknown"}'
 ```
 
 只允许 `file:` 跟踪地址，拒绝 http／https 和远程 `file://host/...`，避免误上传。保存内容为脱敏状态、指标、版本字段和布尔 judge 检查，不保存 prompt、response、transcript、session_id、原始错误或凭据。token 未采集时保持 unknown，不把 0 当成零消耗。

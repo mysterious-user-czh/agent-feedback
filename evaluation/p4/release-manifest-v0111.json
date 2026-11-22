@@ -1,0 +1,11 @@
+{
+  "version": "0.11.1",
+  "release": "dist/agent-feedback-v0.11.1.zip",
+  "release_files": 128,
+  "release_sha256": "3f6b79e5fbb4eee2fda2a881713267ffca9d6705a63b006c5e355036bc30b17d",
+  "wheel": "dist/agent_feedback_local-0.11.1-py3-none-any.whl",
+  "wheel_sha256": "96e3a682c1d1fe60e0d6a9c7f70ae5fa11bf269c8744d5a4be73d621a64774a4",
+  "skill_sha256": "35edbff01de9dbcc7936eff12e2841ba312504475ce88d79e4dd235ea5c73734",
+  "privacy_content_scan": "pass; session IDs, absolute Windows paths, secrets and sensitive filenames",
+  "excluded": "validation, credentials, live databases, raw traces, virtualenvs, caches"
+}
