@@ -1,0 +1,513 @@
+{
+  "summary": {
+    "runs": 15,
+    "coverage_missing": [],
+    "route_pass": 6,
+    "execution_observed": 15,
+    "artifact_pass_applicable": 4,
+    "artifact_applicable": 12,
+    "overall_pass": 0,
+    "exit_zero": 3,
+    "exit_nonzero": 12,
+    "by_case": {
+      "p2-01-success-word-pdf": {
+        "runs": 3,
+        "route_pass": 2,
+        "overall_pass": 0
+      },
+      "p2-02-failure-missing-input": {
+        "runs": 3,
+        "route_pass": 0,
+        "overall_pass": 0
+      },
+      "p2-03-reject-legacy-doc": {
+        "runs": 3,
+        "route_pass": 0,
+        "overall_pass": 0
+      },
+      "p2-04-confusable-image-compression": {
+        "runs": 3,
+        "route_pass": 3,
+        "overall_pass": 0
+      },
+      "p2-05-confusable-word-review": {
+        "runs": 3,
+        "route_pass": 1,
+        "overall_pass": 0
+      }
+    }
+  },
+  "hermes_version": "Hermes Agent v0.23.1+6642.g005389f (2026.9.24); upstream 422ad186; local 005389f7 (+214 carried commits)",
+  "isolation": "独立 HOME、HERMES_HOME、TEMP、每轮独立工作目录；未使用污染批次 validation/p2。",
+  "redaction": "不含 query、最终回复、session_id、原始轨迹、凭据或验证数据库。",
+  "results": [
+    {
+      "run_id": "p2-p2-01-success-word-pdf-a1-0dba41d0d5",
+      "case_id": "p2-01-success-word-pdf",
+      "attempt": 1,
+      "started_at": "2026-11-16T05:20:35.154168+00:00",
+      "ended_at": "2026-11-16T05:21:25.792103+00:00",
+      "duration_seconds": 50.64000000001397,
+      "model": {
+        "default": "deepseek-v4-flash",
+        "provider": "deepseek",
+        "base_url": ""
+      },
+      "harness_version": "p2-isolated-hermes-v1",
+      "config_sha256": "c9ba7f0bb0972d35a4b738b9c6f1a4d92d0bdc218e7b41d80d4651c4e851c28e",
+      "skill_tree_sha256": "fd791a094672c5e41a992e7f1158d36e4c06e0a9624a98b4ecc90c20119a0337",
+      "fixture_sha256": {
+        "word-image.docx": "e088a0b113a61d991ac33aae4b1bde9dcf46669b951a9dbe7313e8d9043d9fa9",
+        "word-review.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99",
+        "word-to-pdf.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99"
+      },
+      "missing_run": false,
+      "exit_code": 1,
+      "selected_skills": [
+        "docx"
+      ],
+      "route_pass": false,
+      "execution_observed": true,
+      "artifact_pass": true,
+      "artifact_evidence": "PDF pages=1, required text=True",
+      "overall_pass": false
+    },
+    {
+      "run_id": "p2-p2-01-success-word-pdf-a2-21b3f97c76",
+      "case_id": "p2-01-success-word-pdf",
+      "attempt": 2,
+      "started_at": "2026-11-16T05:21:25.796106+00:00",
+      "ended_at": "2026-11-16T05:21:58.794478+00:00",
+      "duration_seconds": 33.0,
+      "model": {
+        "default": "deepseek-v4-flash",
+        "provider": "deepseek",
+        "base_url": ""
+      },
+      "harness_version": "p2-isolated-hermes-v1",
+      "config_sha256": "c9ba7f0bb0972d35a4b738b9c6f1a4d92d0bdc218e7b41d80d4651c4e851c28e",
+      "skill_tree_sha256": "fd791a094672c5e41a992e7f1158d36e4c06e0a9624a98b4ecc90c20119a0337",
+      "fixture_sha256": {
+        "word-image.docx": "e088a0b113a61d991ac33aae4b1bde9dcf46669b951a9dbe7313e8d9043d9fa9",
+        "word-review.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99",
+        "word-to-pdf.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99"
+      },
+      "missing_run": false,
+      "exit_code": 1,
+      "selected_skills": [
+        "microsoft-office",
+        "docx"
+      ],
+      "route_pass": true,
+      "execution_observed": true,
+      "artifact_pass": false,
+      "artifact_evidence": "PDF invalid/missing: [Errno 2] No such file or directory: '<LOCAL_WORKSPACE>/p2-p2-01-success-word-pdf-a2-21b3f97c76\\\\artifacts\\\\p2-p2-01-success-word-pdf-a2-21b3f97c76.pdf'",
+      "overall_pass": false
+    },
+    {
+      "run_id": "p2-p2-01-success-word-pdf-a3-63c6cf09ac",
+      "case_id": "p2-01-success-word-pdf",
+      "attempt": 3,
+      "started_at": "2026-11-16T05:21:58.799479+00:00",
+      "ended_at": "2026-11-16T05:22:36.132860+00:00",
+      "duration_seconds": 37.32799999997951,
+      "model": {
+        "default": "deepseek-v4-flash",
+        "provider": "deepseek",
+        "base_url": ""
+      },
+      "harness_version": "p2-isolated-hermes-v1",
+      "config_sha256": "c9ba7f0bb0972d35a4b738b9c6f1a4d92d0bdc218e7b41d80d4651c4e851c28e",
+      "skill_tree_sha256": "fd791a094672c5e41a992e7f1158d36e4c06e0a9624a98b4ecc90c20119a0337",
+      "fixture_sha256": {
+        "word-image.docx": "e088a0b113a61d991ac33aae4b1bde9dcf46669b951a9dbe7313e8d9043d9fa9",
+        "word-review.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99",
+        "word-to-pdf.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99"
+      },
+      "missing_run": false,
+      "exit_code": 1,
+      "selected_skills": [
+        "microsoft-office",
+        "docx"
+      ],
+      "route_pass": true,
+      "execution_observed": true,
+      "artifact_pass": false,
+      "artifact_evidence": "PDF invalid/missing: [Errno 2] No such file or directory: '<LOCAL_WORKSPACE>/p2-p2-01-success-word-pdf-a3-63c6cf09ac\\\\artifacts\\\\p2-p2-01-success-word-pdf-a3-63c6cf09ac.pdf'",
+      "overall_pass": false
+    },
+    {
+      "run_id": "p2-p2-02-failure-missing-input-a1-8997f12a57",
+      "case_id": "p2-02-failure-missing-input",
+      "attempt": 1,
+      "started_at": "2026-11-16T05:22:36.144476+00:00",
+      "ended_at": "2026-11-16T05:22:45.826524+00:00",
+      "duration_seconds": 9.670999999972992,
+      "model": {
+        "default": "deepseek-v4-flash",
+        "provider": "deepseek",
+        "base_url": ""
+      },
+      "harness_version": "p2-isolated-hermes-v1",
+      "config_sha256": "c9ba7f0bb0972d35a4b738b9c6f1a4d92d0bdc218e7b41d80d4651c4e851c28e",
+      "skill_tree_sha256": "fd791a094672c5e41a992e7f1158d36e4c06e0a9624a98b4ecc90c20119a0337",
+      "fixture_sha256": {
+        "word-image.docx": "e088a0b113a61d991ac33aae4b1bde9dcf46669b951a9dbe7313e8d9043d9fa9",
+        "word-review.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99",
+        "word-to-pdf.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99"
+      },
+      "missing_run": false,
+      "exit_code": 0,
+      "selected_skills": [],
+      "route_pass": false,
+      "execution_observed": true,
+      "artifact_pass": true,
+      "artifact_evidence": "Missing input acknowledged and no fabricated artifact",
+      "overall_pass": false
+    },
+    {
+      "run_id": "p2-p2-02-failure-missing-input-a2-b95fa64a95",
+      "case_id": "p2-02-failure-missing-input",
+      "attempt": 2,
+      "started_at": "2026-11-16T05:22:45.832530+00:00",
+      "ended_at": "2026-11-16T05:22:55.084613+00:00",
+      "duration_seconds": 9.25,
+      "model": {
+        "default": "deepseek-v4-flash",
+        "provider": "deepseek",
+        "base_url": ""
+      },
+      "harness_version": "p2-isolated-hermes-v1",
+      "config_sha256": "c9ba7f0bb0972d35a4b738b9c6f1a4d92d0bdc218e7b41d80d4651c4e851c28e",
+      "skill_tree_sha256": "fd791a094672c5e41a992e7f1158d36e4c06e0a9624a98b4ecc90c20119a0337",
+      "fixture_sha256": {
+        "word-image.docx": "e088a0b113a61d991ac33aae4b1bde9dcf46669b951a9dbe7313e8d9043d9fa9",
+        "word-review.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99",
+        "word-to-pdf.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99"
+      },
+      "missing_run": false,
+      "exit_code": 0,
+      "selected_skills": [],
+      "route_pass": false,
+      "execution_observed": true,
+      "artifact_pass": true,
+      "artifact_evidence": "Missing input acknowledged and no fabricated artifact",
+      "overall_pass": false
+    },
+    {
+      "run_id": "p2-p2-02-failure-missing-input-a3-f1aac9899b",
+      "case_id": "p2-02-failure-missing-input",
+      "attempt": 3,
+      "started_at": "2026-11-16T05:22:55.090613+00:00",
+      "ended_at": "2026-11-16T05:23:05.040875+00:00",
+      "duration_seconds": 9.953000000037719,
+      "model": {
+        "default": "deepseek-v4-flash",
+        "provider": "deepseek",
+        "base_url": ""
+      },
+      "harness_version": "p2-isolated-hermes-v1",
+      "config_sha256": "c9ba7f0bb0972d35a4b738b9c6f1a4d92d0bdc218e7b41d80d4651c4e851c28e",
+      "skill_tree_sha256": "fd791a094672c5e41a992e7f1158d36e4c06e0a9624a98b4ecc90c20119a0337",
+      "fixture_sha256": {
+        "word-image.docx": "e088a0b113a61d991ac33aae4b1bde9dcf46669b951a9dbe7313e8d9043d9fa9",
+        "word-review.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99",
+        "word-to-pdf.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99"
+      },
+      "missing_run": false,
+      "exit_code": 0,
+      "selected_skills": [],
+      "route_pass": false,
+      "execution_observed": true,
+      "artifact_pass": true,
+      "artifact_evidence": "Missing input acknowledged and no fabricated artifact",
+      "overall_pass": false
+    },
+    {
+      "run_id": "p2-p2-03-reject-legacy-doc-a1-f71e6550a3",
+      "case_id": "p2-03-reject-legacy-doc",
+      "attempt": 1,
+      "started_at": "2026-11-16T05:23:05.043875+00:00",
+      "ended_at": "2026-11-16T05:23:33.656469+00:00",
+      "duration_seconds": 28.60999999998603,
+      "model": {
+        "default": "deepseek-v4-flash",
+        "provider": "deepseek",
+        "base_url": ""
+      },
+      "harness_version": "p2-isolated-hermes-v1",
+      "config_sha256": "c9ba7f0bb0972d35a4b738b9c6f1a4d92d0bdc218e7b41d80d4651c4e851c28e",
+      "skill_tree_sha256": "fd791a094672c5e41a992e7f1158d36e4c06e0a9624a98b4ecc90c20119a0337",
+      "fixture_sha256": {
+        "word-image.docx": "e088a0b113a61d991ac33aae4b1bde9dcf46669b951a9dbe7313e8d9043d9fa9",
+        "word-review.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99",
+        "word-to-pdf.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99"
+      },
+      "missing_run": false,
+      "exit_code": 1,
+      "selected_skills": [
+        "docx"
+      ],
+      "route_pass": false,
+      "execution_observed": true,
+      "artifact_pass": null,
+      "artifact_evidence": "No artifact required",
+      "overall_pass": false
+    },
+    {
+      "run_id": "p2-p2-03-reject-legacy-doc-a2-a872066bc0",
+      "case_id": "p2-03-reject-legacy-doc",
+      "attempt": 2,
+      "started_at": "2026-11-16T05:23:33.661982+00:00",
+      "ended_at": "2026-11-16T05:24:12.741206+00:00",
+      "duration_seconds": 39.07799999997951,
+      "model": {
+        "default": "deepseek-v4-flash",
+        "provider": "deepseek",
+        "base_url": ""
+      },
+      "harness_version": "p2-isolated-hermes-v1",
+      "config_sha256": "c9ba7f0bb0972d35a4b738b9c6f1a4d92d0bdc218e7b41d80d4651c4e851c28e",
+      "skill_tree_sha256": "fd791a094672c5e41a992e7f1158d36e4c06e0a9624a98b4ecc90c20119a0337",
+      "fixture_sha256": {
+        "word-image.docx": "e088a0b113a61d991ac33aae4b1bde9dcf46669b951a9dbe7313e8d9043d9fa9",
+        "word-review.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99",
+        "word-to-pdf.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99"
+      },
+      "missing_run": false,
+      "exit_code": 1,
+      "selected_skills": [
+        "docx",
+        "microsoft-office"
+      ],
+      "route_pass": false,
+      "execution_observed": true,
+      "artifact_pass": null,
+      "artifact_evidence": "No artifact required",
+      "overall_pass": false
+    },
+    {
+      "run_id": "p2-p2-03-reject-legacy-doc-a3-534d132fa5",
+      "case_id": "p2-03-reject-legacy-doc",
+      "attempt": 3,
+      "started_at": "2026-11-16T05:24:12.744204+00:00",
+      "ended_at": "2026-11-16T05:24:42.432341+00:00",
+      "duration_seconds": 29.68800000002375,
+      "model": {
+        "default": "deepseek-v4-flash",
+        "provider": "deepseek",
+        "base_url": ""
+      },
+      "harness_version": "p2-isolated-hermes-v1",
+      "config_sha256": "c9ba7f0bb0972d35a4b738b9c6f1a4d92d0bdc218e7b41d80d4651c4e851c28e",
+      "skill_tree_sha256": "fd791a094672c5e41a992e7f1158d36e4c06e0a9624a98b4ecc90c20119a0337",
+      "fixture_sha256": {
+        "word-image.docx": "e088a0b113a61d991ac33aae4b1bde9dcf46669b951a9dbe7313e8d9043d9fa9",
+        "word-review.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99",
+        "word-to-pdf.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99"
+      },
+      "missing_run": false,
+      "exit_code": 1,
+      "selected_skills": [
+        "docx"
+      ],
+      "route_pass": false,
+      "execution_observed": true,
+      "artifact_pass": null,
+      "artifact_evidence": "No artifact required",
+      "overall_pass": false
+    },
+    {
+      "run_id": "p2-p2-04-confusable-image-compression-a1-5ca2bd3418",
+      "case_id": "p2-04-confusable-image-compression",
+      "attempt": 1,
+      "started_at": "2026-11-16T05:24:42.464534+00:00",
+      "ended_at": "2026-11-16T05:25:11.477188+00:00",
+      "duration_seconds": 29.01600000000326,
+      "model": {
+        "default": "deepseek-v4-flash",
+        "provider": "deepseek",
+        "base_url": ""
+      },
+      "harness_version": "p2-isolated-hermes-v1",
+      "config_sha256": "c9ba7f0bb0972d35a4b738b9c6f1a4d92d0bdc218e7b41d80d4651c4e851c28e",
+      "skill_tree_sha256": "fd791a094672c5e41a992e7f1158d36e4c06e0a9624a98b4ecc90c20119a0337",
+      "fixture_sha256": {
+        "word-image.docx": "e088a0b113a61d991ac33aae4b1bde9dcf46669b951a9dbe7313e8d9043d9fa9",
+        "word-review.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99",
+        "word-to-pdf.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99"
+      },
+      "missing_run": false,
+      "exit_code": 1,
+      "selected_skills": [
+        "docx",
+        "microsoft-office"
+      ],
+      "route_pass": true,
+      "execution_observed": true,
+      "artifact_pass": false,
+      "artifact_evidence": "DOCX invalid/missing: Package not found at '<PROJECT>\\validation\\p2-clean\\work\\p2-p2-04-confusable-image-compression-a1-5ca2bd3418\\artifacts\\p2-p2-04-confusable-image-compression-a1-5ca2bd3418.docx'",
+      "overall_pass": false
+    },
+    {
+      "run_id": "p2-p2-04-confusable-image-compression-a2-e61593fa4e",
+      "case_id": "p2-04-confusable-image-compression",
+      "attempt": 2,
+      "started_at": "2026-11-16T05:25:11.483188+00:00",
+      "ended_at": "2026-11-16T05:25:41.781001+00:00",
+      "duration_seconds": 30.29700000002049,
+      "model": {
+        "default": "deepseek-v4-flash",
+        "provider": "deepseek",
+        "base_url": ""
+      },
+      "harness_version": "p2-isolated-hermes-v1",
+      "config_sha256": "c9ba7f0bb0972d35a4b738b9c6f1a4d92d0bdc218e7b41d80d4651c4e851c28e",
+      "skill_tree_sha256": "fd791a094672c5e41a992e7f1158d36e4c06e0a9624a98b4ecc90c20119a0337",
+      "fixture_sha256": {
+        "word-image.docx": "e088a0b113a61d991ac33aae4b1bde9dcf46669b951a9dbe7313e8d9043d9fa9",
+        "word-review.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99",
+        "word-to-pdf.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99"
+      },
+      "missing_run": false,
+      "exit_code": 1,
+      "selected_skills": [
+        "docx"
+      ],
+      "route_pass": true,
+      "execution_observed": true,
+      "artifact_pass": false,
+      "artifact_evidence": "DOCX invalid/missing: Package not found at '<PROJECT>\\validation\\p2-clean\\work\\p2-p2-04-confusable-image-compression-a2-e61593fa4e\\artifacts\\p2-p2-04-confusable-image-compression-a2-e61593fa4e.docx'",
+      "overall_pass": false
+    },
+    {
+      "run_id": "p2-p2-04-confusable-image-compression-a3-2977113c96",
+      "case_id": "p2-04-confusable-image-compression",
+      "attempt": 3,
+      "started_at": "2026-11-16T05:25:41.787519+00:00",
+      "ended_at": "2026-11-16T05:26:10.692685+00:00",
+      "duration_seconds": 28.905999999959022,
+      "model": {
+        "default": "deepseek-v4-flash",
+        "provider": "deepseek",
+        "base_url": ""
+      },
+      "harness_version": "p2-isolated-hermes-v1",
+      "config_sha256": "c9ba7f0bb0972d35a4b738b9c6f1a4d92d0bdc218e7b41d80d4651c4e851c28e",
+      "skill_tree_sha256": "fd791a094672c5e41a992e7f1158d36e4c06e0a9624a98b4ecc90c20119a0337",
+      "fixture_sha256": {
+        "word-image.docx": "e088a0b113a61d991ac33aae4b1bde9dcf46669b951a9dbe7313e8d9043d9fa9",
+        "word-review.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99",
+        "word-to-pdf.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99"
+      },
+      "missing_run": false,
+      "exit_code": 1,
+      "selected_skills": [
+        "docx"
+      ],
+      "route_pass": true,
+      "execution_observed": true,
+      "artifact_pass": false,
+      "artifact_evidence": "DOCX invalid/missing: Package not found at '<PROJECT>\\validation\\p2-clean\\work\\p2-p2-04-confusable-image-compression-a3-2977113c96\\artifacts\\p2-p2-04-confusable-image-compression-a3-2977113c96.docx'",
+      "overall_pass": false
+    },
+    {
+      "run_id": "p2-p2-05-confusable-word-review-a1-0870e11443",
+      "case_id": "p2-05-confusable-word-review",
+      "attempt": 1,
+      "started_at": "2026-11-16T05:26:10.696195+00:00",
+      "ended_at": "2026-11-16T05:26:38.256319+00:00",
+      "duration_seconds": 27.56300000002375,
+      "model": {
+        "default": "deepseek-v4-flash",
+        "provider": "deepseek",
+        "base_url": ""
+      },
+      "harness_version": "p2-isolated-hermes-v1",
+      "config_sha256": "c9ba7f0bb0972d35a4b738b9c6f1a4d92d0bdc218e7b41d80d4651c4e851c28e",
+      "skill_tree_sha256": "fd791a094672c5e41a992e7f1158d36e4c06e0a9624a98b4ecc90c20119a0337",
+      "fixture_sha256": {
+        "word-image.docx": "e088a0b113a61d991ac33aae4b1bde9dcf46669b951a9dbe7313e8d9043d9fa9",
+        "word-review.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99",
+        "word-to-pdf.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99"
+      },
+      "missing_run": false,
+      "exit_code": 1,
+      "selected_skills": [
+        "microsoft-office",
+        "microsoft-office",
+        "microsoft-office"
+      ],
+      "route_pass": false,
+      "execution_observed": true,
+      "artifact_pass": false,
+      "artifact_evidence": "DOCX invalid/missing: [Errno 2] No such file or directory: '<LOCAL_WORKSPACE>/p2-p2-05-confusable-word-review-a1-0870e11443\\\\artifacts\\\\p2-p2-05-confusable-word-review-a1-0870e11443.docx'",
+      "overall_pass": false
+    },
+    {
+      "run_id": "p2-p2-05-confusable-word-review-a2-51c3650eac",
+      "case_id": "p2-05-confusable-word-review",
+      "attempt": 2,
+      "started_at": "2026-11-16T05:26:38.259840+00:00",
+      "ended_at": "2026-11-16T05:27:19.568930+00:00",
+      "duration_seconds": 41.31199999997625,
+      "model": {
+        "default": "deepseek-v4-flash",
+        "provider": "deepseek",
+        "base_url": ""
+      },
+      "harness_version": "p2-isolated-hermes-v1",
+      "config_sha256": "c9ba7f0bb0972d35a4b738b9c6f1a4d92d0bdc218e7b41d80d4651c4e851c28e",
+      "skill_tree_sha256": "fd791a094672c5e41a992e7f1158d36e4c06e0a9624a98b4ecc90c20119a0337",
+      "fixture_sha256": {
+        "word-image.docx": "e088a0b113a61d991ac33aae4b1bde9dcf46669b951a9dbe7313e8d9043d9fa9",
+        "word-review.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99",
+        "word-to-pdf.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99"
+      },
+      "missing_run": false,
+      "exit_code": 1,
+      "selected_skills": [
+        "docx",
+        "docx"
+      ],
+      "route_pass": true,
+      "execution_observed": true,
+      "artifact_pass": false,
+      "artifact_evidence": "DOCX invalid/missing: [Errno 2] No such file or directory: '<LOCAL_WORKSPACE>/p2-p2-05-confusable-word-review-a2-51c3650eac\\\\artifacts\\\\p2-p2-05-confusable-word-review-a2-51c3650eac.docx'",
+      "overall_pass": false
+    },
+    {
+      "run_id": "p2-p2-05-confusable-word-review-a3-a57bc4e1c5",
+      "case_id": "p2-05-confusable-word-review",
+      "attempt": 3,
+      "started_at": "2026-11-16T05:27:19.570981+00:00",
+      "ended_at": "2026-11-16T05:27:55.809988+00:00",
+      "duration_seconds": 36.23500000004424,
+      "model": {
+        "default": "deepseek-v4-flash",
+        "provider": "deepseek",
+        "base_url": ""
+      },
+      "harness_version": "p2-isolated-hermes-v1",
+      "config_sha256": "c9ba7f0bb0972d35a4b738b9c6f1a4d92d0bdc218e7b41d80d4651c4e851c28e",
+      "skill_tree_sha256": "fd791a094672c5e41a992e7f1158d36e4c06e0a9624a98b4ecc90c20119a0337",
+      "fixture_sha256": {
+        "word-image.docx": "e088a0b113a61d991ac33aae4b1bde9dcf46669b951a9dbe7313e8d9043d9fa9",
+        "word-review.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99",
+        "word-to-pdf.docx": "965a9b83db3a8e8ee0b74b407811fb3d8ebae97d67f988dbdf4d7e8ce67a7f99"
+      },
+      "missing_run": false,
+      "exit_code": 1,
+      "selected_skills": [
+        "microsoft-office",
+        "microsoft-office",
+        "microsoft-office"
+      ],
+      "route_pass": false,
+      "execution_observed": true,
+      "artifact_pass": false,
+      "artifact_evidence": "comment=True, trackChanges=False",
+      "overall_pass": false
+    }
+  ]
+}

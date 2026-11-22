@@ -1,0 +1,43 @@
+{
+  "result": "PASS",
+  "version": "0.11.1",
+  "source": "Read-only copy of a real Hermes state.db with WAL/SHM; live Hermes was not modified",
+  "source_integrity_check": "ok",
+  "source_sessions_total": 250,
+  "source_messages_total": 12122,
+  "scope_name": "non_empty_main_sessions",
+  "excluded_subagent_sessions": 199,
+  "excluded_empty_main_sessions": 6,
+  "coverage": {
+    "sessions": "45/45",
+    "messages": "7864/7864",
+    "skill_selections": "71/71",
+    "tool_failures": "266/266",
+    "tool_cancellations": "14/14",
+    "tool_error_or_cancel_events": "280/280"
+  },
+  "created_task_segments": 423,
+  "correction_candidates": 7,
+  "missing_and_unexpected_differences": 0,
+  "parse_failures": 0,
+  "second_import_new_messages_selections_failures_cancellations_corrections": 0,
+  "old_session_new_message_rescan_test": "PASS (tests/test_auto_collect.py)",
+  "unexpected_session_rejection_test": "PASS (tests/test_auto_collect.py)",
+  "watch_cycles_passed": "2/2",
+  "source_hashes_captured_before_first_read": true,
+  "source_database_and_wal_hashes_unchanged": true,
+  "source_shm_hash_unchanged": true,
+  "source_shm_note": "SHM reader marks may change; DB and WAL content are the hard read-only gate",
+  "real_hermes_home_modified": false,
+  "triage": {
+    "p1_tasks": 21,
+    "p1_findings": 22,
+    "execution_fail_tasks": 125,
+    "tasks_with_tool_failures": 125,
+    "observed_label_tasks": 7,
+    "all_p1_tasks_in_first_100": true,
+    "source_started_at_populated": "423/423"
+  },
+  "scope": "Periodic 60-second incremental collection after installation, not a realtime hook or reboot-persistent service",
+  "limits": "Routing remains unknown without reliable truth; final artifacts require independent oracle checks"
+}

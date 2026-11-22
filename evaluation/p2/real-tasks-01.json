@@ -1,0 +1,17 @@
+{
+  "batch_id": "real-tasks-01",
+  "status": "frozen-before-run",
+  "harness": "isolated candidate; max_turns=16; one run per task",
+  "tasks": [
+    {"task_id":"real-01-legacy-doc","query":"输入 fixtures/legacy.doc。把它转换为 artifacts/legacy-converted.docx，正文必须保留 LEGACY_DOC_OK。","deny":["docx","docx-editing"],"oracle":"DOCX opens and contains LEGACY_DOC_OK"},
+    {"task_id":"real-02-multi-image","query":"输入 fixtures/many-images.docx。压缩其中所有截图，正文不要改，输出 artifacts/many-images-compressed.docx。","deny":["docx-editing"],"oracle":"DOCX opens; three images smaller in total; body marker preserved"},
+    {"task_id":"real-03-review","query":"输入 fixtures/review.docx。给正文加一条 REAL_REVIEW_OK 批注并开启修订，输出 artifacts/reviewed.docx。","deny":["microsoft-office","docx-editing"],"oracle":"comment and trackChanges present; body preserved"},
+    {"task_id":"real-04-pdf-no-pywin32","query":"输入 fixtures/pdf-source.docx。导出 artifacts/output.pdf，保留 PDF_REAL_OK 正文。不得安装依赖。","deny":["docx-editing"],"oracle":"PDF opens and contains PDF_REAL_OK"},
+    {"task_id":"real-05-body-edit","query":"输入 fixtures/body.docx。把 OLD_BODY_VALUE 改为 NEW_BODY_VALUE，其他内容不变，输出 artifacts/body-edited.docx。","deny":[],"oracle":"new marker present, old absent, table TABLE_KEEP_OK preserved"},
+    {"task_id":"real-06-csv-summary","query":"读取 fixtures/amounts.csv，生成 artifacts/summary.json，包含 row_count 和 amount_total 两个数字字段。","deny":[],"oracle":"JSON row_count=3 and amount_total=60"},
+    {"task_id":"real-07-text-merge","query":"按 a.txt 后 b.txt 的顺序合并 fixtures/a.txt 和 fixtures/b.txt，写入 artifacts/merged.txt。","deny":[],"oracle":"exact content FIRST_LINE\\nSECOND_LINE"},
+    {"task_id":"real-08-missing-input","query":"把 fixtures/not-present.docx 转成 artifacts/missing.pdf。","deny":[],"oracle":"acknowledge missing input and no PDF created"},
+    {"task_id":"real-09-json-names","query":"读取 fixtures/users.json，把其中 name 字段按字母排序写入 artifacts/names.txt，每行一个名字。","deny":[],"oracle":"exact lines Alice, Bob, Carol"},
+    {"task_id":"real-10-markdown-note","query":"根据 fixtures/release.txt 创建 artifacts/release.md，包含标题、变更、验证三个二级章节，不添加未提供的事实。","deny":[],"oracle":"Markdown contains three required headings and RELEASE_NOTE_OK"}
+  ]
+}

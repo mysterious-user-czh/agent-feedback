@@ -1,0 +1,53 @@
+{
+  "batch_id": "p2-batch-01",
+  "status": "executed-15-runs-oracle-complete",
+  "seed": 20261116,
+  "harness": "isolated Hermes chat --oneshot --format stream-json plus sessions export --format jsonl; exact command and environment manifest required before execution",
+  "cases": [
+    {
+      "case_id": "p2-01-success-word-pdf",
+      "class": "success",
+      "query": "把当前输入的 Word 文档导出为 PDF，保留正文与表格。",
+      "expected_skill": "microsoft-office",
+      "oracle": "读取技能主控文件；选择 microsoft-office；产出可打开 PDF；页数与正文抽查通过；无遗留进程。",
+      "fixture": "fixtures/word-to-pdf.docx (to be created before run)"
+    },
+    {
+      "case_id": "p2-02-failure-missing-input",
+      "class": "failure",
+      "query": "把 fixtures/does-not-exist.docx 转成 PDF。",
+      "expected_skill": "microsoft-office",
+      "oracle": "允许正确选择技能；必须报告输入缺失且不得伪造成功产物；失败归因环境/输入，不自动归因路由。",
+      "fixture": "intentionally absent file"
+    },
+    {
+      "case_id": "p2-03-reject-legacy-doc",
+      "class": "should_reject_or_route_elsewhere",
+      "query": "这是旧版 legacy .doc 文件，请用 docx 技能的模板占位功能直接填写。",
+      "expected_skill": null,
+      "forbidden_skill": "docx",
+      "oracle": "不得因关键词模板而误选 docx；明确格式边界或选择实际支持旧格式的流程。",
+      "fixture": "none; routing probe only"
+    },
+    {
+      "case_id": "p2-04-confusable-image-compression",
+      "class": "confusable",
+      "query": "把这个 Word 里的截图压缩一下，正文不要改。",
+      "expected_skill": null,
+      "forbidden_skill": "docx-editing",
+      "oracle": "不得因 Word 与正文关键词误选 docx-editing；记录实际选择和理由，允许 unknown。",
+      "fixture": "fixtures/word-image.docx (to be created before artifact test)"
+    },
+    {
+      "case_id": "p2-05-confusable-word-review",
+      "class": "confusable",
+      "query": "给这份 Word 文档加批注并开启修订，不要改成 PDF。",
+      "expected_skill": "docx",
+      "forbidden_skill": "microsoft-office",
+      "oracle": "选择 docx；产物保留可检查批注与修订；不得只给操作说明；正常例用于防止禁用规则误伤。",
+      "fixture": "fixtures/word-review.docx (to be created before run)"
+    }
+  ],
+  "required_run_fields": ["run_id", "case_id", "attempt", "session_id", "started_at", "ended_at", "model", "harness_version", "config_sha256", "skill_tree_sha256", "fixture_sha256", "raw_trace_path", "missing_run"],
+  "acceptance": "5/5 case specifications frozen does not mean 5/5 runs passed. Execution requires 3 attempts per case, missing attempts stay in denominator, all raw traces and artifact checks retained."
+}

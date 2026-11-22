@@ -1,0 +1,37 @@
+schema_version: v1alpha1
+environment:
+  type: none
+skills: []
+engine:
+  name: hermes
+  custom:
+    transport: local
+    conversation_mode: batch
+    timeout_seconds: 300
+    response_format: session_result
+    env:
+      AGENT_FEEDBACK_HERMES_TEMPLATE: ${AGENT_FEEDBACK_HERMES_TEMPLATE}
+      AGENT_FEEDBACK_HERMES_BIN: ${AGENT_FEEDBACK_HERMES_BIN}
+      AGENT_FEEDBACK_HERMES_ENV_FILE: ${AGENT_FEEDBACK_HERMES_ENV_FILE}
+      AGENT_FEEDBACK_MODEL: ${AGENT_FEEDBACK_MODEL:-unknown}
+    local:
+      command: ${AGENT_FEEDBACK_PYTHON}
+      args:
+        - ${AGENT_FEEDBACK_ROOT}/integrations/skillup/hermes_engine.py
+        - --input
+        - ${input_file}
+        - --output
+        - ${output_file}
+      cwd: ${workspace}
+      input_file: ${input_file}
+      output_file: ${output_file}
+cases:
+  files:
+    - evals/cases/normal-body-edit.yaml
+  defaults:
+    timeout_seconds: 240
+    max_turns: 16
+  parallelism: 1
+report:
+  formats: [json]
+  artifacts: [transcript]

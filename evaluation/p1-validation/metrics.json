@@ -1,0 +1,133 @@
+{
+  "rules_version": "hermes-message-segments-v2.2-three-fields",
+  "golden_sha256": "fb97d6d5fb5de3f36bc7735d1cfe7689127fa82016e22134eda4691e127e2944",
+  "selected_sessions": 14,
+  "annotated_cases": 29,
+  "covered_sessions": 14,
+  "missing_selected_sessions": [],
+  "unexpected_case_sessions": [],
+  "strata_counts": {
+    "other_continuation": 3,
+    "new_task": 10,
+    "assistant_continuation": 8,
+    "tool_continuation": 8
+  },
+  "gold_positive_boundaries": 4,
+  "predicted_positive_boundaries": 10,
+  "boundary_confusion": {
+    "TP": 4,
+    "FP": 6,
+    "FN": 0,
+    "TN": 19
+  },
+  "boundary_precision": 0.4,
+  "boundary_recall": 1.0,
+  "boundary_f1": 0.5714285714285714,
+  "relation_accuracy": 0.7931034482758621,
+  "ownership_accuracy": 0.7931034482758621,
+  "predicted_unable_to_determine_count": 0,
+  "predicted_unable_to_determine_rate": 0.0,
+  "gold_ambiguous_cases": 0,
+  "unknown_metric_limit": "Measured from predictions; no ambiguous gold examples, so this is not ambiguity-detection effectiveness evidence",
+  "confidence_intervals": {
+    "boundary_precision": {
+      "method": "Wilson score, 95%",
+      "successes": 4,
+      "total": 10,
+      "lower": 0.16818032970623614,
+      "upper": 0.6873262302663417
+    },
+    "boundary_recall": {
+      "method": "Wilson score, 95%",
+      "successes": 4,
+      "total": 4,
+      "lower": 0.5101091635454027,
+      "upper": 1.0
+    },
+    "boundary_f1": {
+      "method": "session-cluster bootstrap percentile, 95%; 10,000 iterations; seed 20261116",
+      "iterations": 10000,
+      "seed": 20261116,
+      "lower": 0.0,
+      "upper": 1.0
+    },
+    "relation_accuracy": {
+      "method": "Wilson score, 95%",
+      "successes": 23,
+      "total": 29,
+      "lower": 0.6160990959613211,
+      "upper": 0.9015392980215897
+    },
+    "ownership_accuracy": {
+      "method": "Wilson score, 95%",
+      "successes": 23,
+      "total": 29,
+      "lower": 0.6160990959613211,
+      "upper": 0.9015392980215897
+    }
+  },
+  "difference_count": 6,
+  "differences": [
+    {
+      "case_id": "p1v-05",
+      "session_id": "session-003",
+      "message_id": 565,
+      "predicted_relation": "new_task",
+      "gold_relation": "continuation",
+      "predicted_owner": 565,
+      "gold_owner": 557,
+      "note": "对生成参数汇总文档的确认"
+    },
+    {
+      "case_id": "p1v-06",
+      "session_id": "session-003",
+      "message_id": 809,
+      "predicted_relation": "new_task",
+      "gold_relation": "continuation",
+      "predicted_owner": 809,
+      "gold_owner": 804,
+      "note": "压缩摘要不是新任务，延续804"
+    },
+    {
+      "case_id": "p1v-07",
+      "session_id": "session-003",
+      "message_id": 1068,
+      "predicted_relation": "new_task",
+      "gold_relation": "correction",
+      "predicted_owner": 1068,
+      "gold_owner": 1048,
+      "note": "要求重跑并保证1048参数修改任务一致"
+    },
+    {
+      "case_id": "p1v-08",
+      "session_id": "session-003",
+      "message_id": 1098,
+      "predicted_relation": "new_task",
+      "gold_relation": "continuation",
+      "predicted_owner": 1098,
+      "gold_owner": 789,
+      "note": "接受789混合方案"
+    },
+    {
+      "case_id": "p1v-09",
+      "session_id": "session-003",
+      "message_id": 1135,
+      "predicted_relation": "new_task",
+      "gold_relation": "continuation",
+      "predicted_owner": 1135,
+      "gold_owner": 1134,
+      "note": "继续1134低速轴图片检查"
+    },
+    {
+      "case_id": "p1v-10",
+      "session_id": "session-003",
+      "message_id": 1281,
+      "predicted_relation": "new_task",
+      "gold_relation": "correction",
+      "predicted_owner": 1281,
+      "gold_owner": 1247,
+      "note": "修正1247计算检查任务中的mn与T3"
+    }
+  ],
+  "review_limit": "Development/diagnostic set only; no human blind review, inter-annotator agreement, or independent test-set evidence"
+}

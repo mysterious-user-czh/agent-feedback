@@ -1,0 +1,15 @@
+{
+  "batch_id": "policy-paraphrases-01",
+  "status": "frozen-before-policy-run",
+  "note": "Eight frozen smoke cases, not a generalization estimate. rewrite-05 exposed a missing shrink-image pattern during the dry check and is development-only; the other seven remain holdout queries.",
+  "cases": [
+    {"case_id":"rewrite-01-body","oracle_case":"p2-06","query":"只动 fixtures/word-to-pdf.docx 的正文：将 P2_WORD_PDF_OK 文本替换为 P2_BODY_EDIT_OK，其余段落与表格原样保留，保存为 artifacts/rewrite.docx。","expected_deny":["docx","microsoft-office"]},
+    {"case_id":"rewrite-02-body","oracle_case":"p2-06","query":"编辑 fixtures/word-to-pdf.docx，把 P2_WORD_PDF_OK 改成 P2_BODY_EDIT_OK，其他内容不变，输出 artifacts/rewrite.docx。","expected_deny":["docx","microsoft-office"]},
+    {"case_id":"rewrite-03-review","oracle_case":"p2-05","query":"请在 fixtures/word-review.docx 里留下内容 P2_REVIEW_OK 的批注，并打开修订模式，成品写入 artifacts/rewrite.docx。","expected_deny":["docx-editing","microsoft-office"]},
+    {"case_id":"rewrite-04-review","oracle_case":"p2-05","query":"Add a comment containing P2_REVIEW_OK to fixtures/word-review.docx and enable track changes. Save as artifacts/rewrite.docx.","expected_deny":["docx-editing","microsoft-office"]},
+    {"case_id":"rewrite-05-image","oracle_case":"p2-04","query":"缩小 fixtures/word-image.docx 中内嵌图片的存储大小，正文字节保持不变，写入 artifacts/rewrite.docx。","expected_deny":["docx-editing"]},
+    {"case_id":"rewrite-06-image","oracle_case":"p2-04","query":"Compress the screenshot embedded in fixtures/word-image.docx without altering its body XML; output artifacts/rewrite.docx.","expected_deny":["docx-editing"]},
+    {"case_id":"rewrite-07-pdf","oracle_case":"p2-01","query":"把 fixtures/word-to-pdf.docx 导出为 PDF，保留 P2_WORD_PDF_OK 和 P2-01，写入 artifacts/rewrite.pdf。","expected_deny":["docx-editing"]},
+    {"case_id":"rewrite-08-legacy","oracle_case":"p2-03","query":"这是二进制 Word .doc 文件，请直接用 OOXML 模板替换其中的占位符。没有输入文件时明确说明，不要伪造输出。","expected_deny":["docx","docx-editing"]}
+  ]
+}

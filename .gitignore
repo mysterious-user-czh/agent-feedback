@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+*.db
+*.db-shm
+*.db-wal
+*.egg-info/
+build/
+dist/
+examples/demo.db
+# Validation evidence may contain credentials, raw queries, session IDs and absolute paths.
+validation/
+*.auth.json
+auth.json
+.env

@@ -1,0 +1,31 @@
+{
+  "version": "1.0.0",
+  "scope": "High-confidence capability exclusions only; not a semantic top-1 router.",
+  "rules": [
+    {
+      "id": "legacy-binary-doc-requires-conversion",
+      "any": ["(?<!x)\\blegacy\\s*\\.doc\\b", "[\\u4e00-\\u9fffA-Za-z0-9_./\\\\-]*\\.doc(?!x)\\b", "旧版.*文档", "二进制\\s*Word"],
+      "deny": ["docx", "docx-editing"]
+    },
+    {
+      "id": "review-comments-and-track-changes",
+      "any": ["批注", "评论.*(?:文档|正文|Word)", "开启修订", "修订模式", "track\\s*changes", "add\\s+(?:a\\s+)?comment"],
+      "deny": ["microsoft-office", "docx-editing"]
+    },
+    {
+      "id": "lossless-body-replacement",
+      "any": ["正文.*(?:替换|改为|改成)", "替换.*正文", "文本替换", "replace.*(?:body|text)", "把[\\s\\S]{0,80}(?:改为|改成)[\\s\\S]{0,80}其他内容不变"],
+      "deny": ["microsoft-office", "docx"]
+    },
+    {
+      "id": "embedded-image-compression",
+      "any": ["压缩.*(?:截图|图片|图像|照片)", "缩小.*(?:截图|图片|图像|照片)", "(?:截图|图片|图像|照片).*压缩", "compress.*(?:image|screenshot|picture)", "DOCX\\s*压缩"],
+      "deny": ["docx-editing"]
+    },
+    {
+      "id": "pdf-export",
+      "any": ["(?:转|转换|导出|保存)(?:为|成)?\\s*PDF", "(?:转|转换|导出|保存)[^\\n]{0,160}?\\.pdf\\b", "PDF\\s*(?:导出|转换)", "export.*PDF", "export[^\\n]{0,160}?\\.pdf\\b", "convert.*PDF"],
+      "deny": ["docx-editing"]
+    }
+  ]
+}

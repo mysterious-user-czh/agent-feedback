@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "source": {
+    "batch": "p2-clean",
+    "case_id": "p2-04-confusable-image-compression",
+    "observations": 3,
+    "failure_signature": "artifact_missing",
+    "observed_missing_artifacts": 3,
+    "source_results_sha256": "771a33afc68b08f61105b745ff0a2323acbdfb3641638f3ccd1a2053f7c12e47",
+    "fixture_sha256": "e088a0b113a61d991ac33aae4b1bde9dcf46669b951a9dbe7313e8d9043d9fa9"
+  },
+  "before": {
+    "template": "p4-regression-before-home",
+    "skill_tree_sha256": "91ceb996f4f6e3c50e40ce188403cf638add0230d4bb27e44fd9e2dc456b92c3"
+  },
+  "after": {
+    "template": "candidate-11-shared-home",
+    "skill_tree_sha256": "8bc00cf238a5c734e7eca901a73795e6423a3ba86be99d9e289f5253c51db1e7",
+    "change": "Existing candidate-10 fix plus quality-85 alignment, alpha preservation and decode/dimension self-checks"
+  },
+  "promotion_rule": "Two fresh before runs must both have the same missing-artifact signature; otherwise classify as flaky and do not claim a stable before/after regression.",
+  "required_runs": {
+    "before": 2,
+    "after": 3,
+    "normal_after": 1
+  },
+  "budget_per_run": {
+    "max_turns_regression": 12,
+    "max_turns_normal": 16,
+    "timeout_seconds": 240,
+    "token_budget": null,
+    "cost_budget": null,
+    "unavailable_budget_fields": "token_and_cost_unknown",
+    "actual_controls_evidence": "validation/BATCH/**/.agent-feedback/engine-controls.json",
+    "skillup_turns_semantics": "reported by skill-up; not assumed to equal CLI agent rounds or used as budget-enforcement evidence"
+  },
+  "normal_control": {
+    "task_id": "real-05-body-edit",
+    "fixture_sha256": "836a7567a0709eb16e5f5c387429b6334ef58f58ecfcf96e7708a85f527d8098"
+  },
+  "privacy": "No raw transcript, final response, session ID, credential, or live database is included in generated cases."
+}

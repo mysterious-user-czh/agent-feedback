@@ -1,0 +1,17 @@
+{
+  "result": "PASS",
+  "version": "0.11.1",
+  "coverage": "5/5",
+  "coverage_difference": 0,
+  "cases": {
+    "mcp_test_failure_rollback": "PASS; Skill and MCP removed; retry on same root succeeded",
+    "abnormal_status": "PASS; malformed JSON rejected without rewriting status",
+    "stale_start": "PASS; exited PID replaced by a fresh verified collector",
+    "expired_verify": "PASS; stale collector status rejected",
+    "stop_after_process_exit": "PASS; stale PID file removed without error"
+  },
+  "unrelated_config_preserved": true,
+  "feedback_data_preserved": true,
+  "real_hermes_home_modified": false,
+  "scope": "Fault injection in an isolated Hermes Home copy only"
+}

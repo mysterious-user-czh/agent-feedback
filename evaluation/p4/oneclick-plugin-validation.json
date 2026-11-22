@@ -1,0 +1,21 @@
+{
+  "version": "0.10.1",
+  "package_files": 8,
+  "package_crc": "pass",
+  "package_sha256": "072eadfccf45ccf25de9a6d1cd828b32fe7ea1b7e96a3f8cf59295364f915f5e",
+  "powershell_syntax": "3/3 pass",
+  "isolated_hermes_install": "pass",
+  "mcp_tools_discovered": 4,
+  "verify_script": "package, contracts, Skill and MCP pass",
+  "duplicate_install_refused": true,
+  "duplicate_attempt_config_and_skill_hashes_unchanged": true,
+  "existing_config_backup_created": true,
+  "existing_config_backup_content_preserved": true,
+  "uninstall_own_mcp_removed": true,
+  "uninstall_own_skill_removed": true,
+  "unrelated_config_preserved": true,
+  "feedback_data_preserved_by_default": true,
+  "real_hermes_home_modified": false,
+  "network_requirement": "First installation downloads Python dependencies unless already cached",
+  "scope": "One-command install, verify and uninstall in an isolated Hermes Home; not a native Hermes catalog admission or a second real LLM task"
+}

@@ -1,0 +1,20 @@
+{
+  "review_version": "p1-r2-same-reviewer-consistency-pass",
+  "scope": "Re-read all 40 original content points and adjudicated all 7 differences again",
+  "reviewed_cases": 40,
+  "agreement_with_r1": 40,
+  "disagreement_message_ids": [],
+  "confirmed_difference_message_ids": [
+    3297,
+    3589,
+    3908,
+    6931,
+    6937,
+    6986,
+    8835
+  ],
+  "not_blind": true,
+  "not_inter_annotator": true,
+  "next_required": "Earliest valid weekly blind re-annotation: 2026-11-22",
+  "golden_r1_sha256": "d6015ebefe25a118306f6afbcc59ed81a5f61bea119ffe273a7bae0bdab333cf"
+}

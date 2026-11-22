@@ -1,0 +1,13 @@
+{
+  "batch_id": "p2-guard-08",
+  "status": "frozen-before-run",
+  "mechanism": "query-scoped deny policy physically omits denied skill directories from each run's isolated HERMES_HOME",
+  "cases": [
+    {"case_id": "p2-01-success-word-pdf", "attempts": 3, "deny": ["docx-editing"], "allowed": ["microsoft-office", "docx"], "oracle": "readable PDF contains P2_WORD_PDF_OK and P2-01"},
+    {"case_id": "p2-03-reject-legacy-doc", "attempts": 3, "deny": ["docx", "docx-editing"], "allowed": ["microsoft-office", null], "oracle": "no denied selection; legacy boundary acknowledged; no fabricated artifact"},
+    {"case_id": "p2-04-confusable-image-compression", "attempts": 3, "deny": ["docx-editing"], "allowed": ["microsoft-office", "docx"], "oracle": "media shrinks; document.xml byte-identical; output DOCX readable"},
+    {"case_id": "p2-05-confusable-word-review", "attempts": 3, "deny": ["docx-editing", "microsoft-office"], "allowed": ["docx"], "oracle": "P2_REVIEW_OK comment and trackChanges both exist"},
+    {"case_id": "p2-06-normal-body-editing", "attempts": 3, "deny": [], "allowed": ["docx-editing", "docx"], "oracle": "P2_WORD_PDF_OK replaced by P2_BODY_EDIT_OK; P2-01 table cell preserved; output DOCX readable"}
+  ],
+  "reporting": "route, artifact and exit status are separate; denied skill loading is impossible in the isolated run and any such selection fails the harness"
+}

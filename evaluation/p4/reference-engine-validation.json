@@ -1,0 +1,16 @@
+{
+  "engine": "deterministic-reference",
+  "real_second_agent": false,
+  "skillup_case": "1/1 PASS",
+  "session_result_import": "1/1",
+  "idempotent_reimport": true,
+  "p3_states": {
+    "routing": "unknown",
+    "execution": "pass",
+    "artifact": "pass",
+    "exit": "pass",
+    "outcome": "pass"
+  },
+  "privacy": "No prompt, response, raw transcript, credential or database in this summary",
+  "scope": "Contract reuse only; not evidence of a second real LLM agent."
+}

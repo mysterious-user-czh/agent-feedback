@@ -1,0 +1,59 @@
+{
+  "files_changed": 9,
+  "totals": {
+    "local_session_ids": 10,
+    "hermes_session_ids": 279,
+    "project_paths": 10
+  },
+  "files": {
+    "evaluation/p1/golden.json": {
+      "local_session_ids": 2,
+      "hermes_session_ids": 58,
+      "project_paths": 0
+    },
+    "evaluation/p1/metrics.json": {
+      "local_session_ids": 0,
+      "hermes_session_ids": 8,
+      "project_paths": 0
+    },
+    "evaluation/p1/predictions.json": {
+      "local_session_ids": 2,
+      "hermes_session_ids": 78,
+      "project_paths": 0
+    },
+    "evaluation/p1/session-inventory.json": {
+      "local_session_ids": 2,
+      "hermes_session_ids": 32,
+      "project_paths": 0
+    },
+    "evaluation/p1-validation/golden.json": {
+      "local_session_ids": 2,
+      "hermes_session_ids": 41,
+      "project_paths": 0
+    },
+    "evaluation/p1-validation/metrics.json": {
+      "local_session_ids": 0,
+      "hermes_session_ids": 6,
+      "project_paths": 0
+    },
+    "evaluation/p1-validation/predictions.json": {
+      "local_session_ids": 2,
+      "hermes_session_ids": 56,
+      "project_paths": 0
+    },
+    "evaluation/p2/results.json": {
+      "local_session_ids": 0,
+      "hermes_session_ids": 0,
+      "project_paths": 3
+    },
+    "evaluation/p2/results.md": {
+      "local_session_ids": 0,
+      "hermes_session_ids": 0,
+      "project_paths": 7
+    }
+  },
+  "unique_sessions_pseudonymized": 34,
+  "session_method": "Stable order-preserving anonymous IDs; original mapping not publicly stored",
+  "path_method": "Project absolute prefix replaced with <PROJECT>",
+  "private_backup": "validation only; excluded from release"
+}

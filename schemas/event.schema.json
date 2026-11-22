@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/agent-feedback/event.schema.json",
+  "title": "Agent Feedback Event",
+  "type": "object",
+  "required": ["task_id", "type", "payload"],
+  "properties": {
+    "task_id": {"type": "string", "minLength": 1, "maxLength": 200},
+    "event_id": {"type": "string", "maxLength": 300},
+    "type": {"enum": ["selection", "tool_result", "artifact", "verification", "process_result"]},
+    "payload": {"type": "object"}
+  },
+  "additionalProperties": false
+}

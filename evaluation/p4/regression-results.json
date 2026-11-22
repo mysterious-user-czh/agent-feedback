@@ -1,0 +1,177 @@
+{
+  "schema_version": 2,
+  "source_case": "p2-04-confusable-image-compression",
+  "source_observations": 3,
+  "before_runs": 2,
+  "before_same_failure_signature": 2,
+  "before_judge_runs": 0,
+  "after_runs": 3,
+  "after_pass": 3,
+  "normal_control_runs": 1,
+  "normal_control_pass": 1,
+  "stable_regression": true,
+  "source_integrity": {
+    "before_template_unchanged": true,
+    "candidate11_template_unchanged": true,
+    "candidate10_frozen_unchanged": true,
+    "before_source_selected_files_unchanged": true
+  },
+  "controls_verified_runs": 6,
+  "controls_semantics": "Received max_turns was passed to the Hermes CLI; skill-up turns are reported separately and are not budget-enforcement evidence.",
+  "after_artifact_sha256": [
+    "8c75bfcb2c21b61adbe66e5bee1f32238ed0abc02aa30b6bdd4269a708fa29ea",
+    "8c75bfcb2c21b61adbe66e5bee1f32238ed0abc02aa30b6bdd4269a708fa29ea",
+    "8c75bfcb2c21b61adbe66e5bee1f32238ed0abc02aa30b6bdd4269a708fa29ea"
+  ],
+  "repeatability_scope": "Three after runs repeat one frozen task; the deterministic judge script is rerun each time and is not an independent sample of model behaviour.",
+  "token_and_cost": "unknown_not_reported",
+  "model_identity": "unknown_not_exposed_by_custom_engine",
+  "before": [
+    {
+      "batch": "skillup-c11-before01",
+      "status": "ERROR",
+      "failure_signature": "artifact_missing",
+      "judge_ran": false,
+      "exit_nonzero": true,
+      "skillup_turns": 14,
+      "controls": {
+        "received_max_turns": 12,
+        "cli_max_turns": 12,
+        "received_timeout_seconds": 240,
+        "effective_timeout_seconds": 240,
+        "skillup_turns_semantics": "reported_by_skillup_not_assumed_to_be_cli_agent_rounds"
+      }
+    },
+    {
+      "batch": "skillup-c11-before02",
+      "status": "ERROR",
+      "failure_signature": "artifact_missing",
+      "judge_ran": false,
+      "exit_nonzero": true,
+      "skillup_turns": 15,
+      "controls": {
+        "received_max_turns": 12,
+        "cli_max_turns": 12,
+        "received_timeout_seconds": 240,
+        "effective_timeout_seconds": 240,
+        "skillup_turns_semantics": "reported_by_skillup_not_assumed_to_be_cli_agent_rounds"
+      }
+    }
+  ],
+  "after": [
+    {
+      "batch": "skillup-c11-after01",
+      "group": "after",
+      "case_id": "p2-04-image-compression-regression",
+      "status": "PASS",
+      "skillup_turns": 6,
+      "judge_checks": {
+        "exit_zero": true,
+        "input_unchanged": true,
+        "docx_opens": true,
+        "document_xml_unchanged": true,
+        "media_smaller": true,
+        "package_smaller": true,
+        "images_decode": true,
+        "dimensions_preserved_or_scaled": true,
+        "alpha_preserved": true
+      },
+      "controls": {
+        "received_max_turns": 12,
+        "cli_max_turns": 12,
+        "received_timeout_seconds": 240,
+        "effective_timeout_seconds": 240,
+        "skillup_turns_semantics": "reported_by_skillup_not_assumed_to_be_cli_agent_rounds"
+      },
+      "artifact_sha256": "8c75bfcb2c21b61adbe66e5bee1f32238ed0abc02aa30b6bdd4269a708fa29ea",
+      "input_tokens": null,
+      "output_tokens": null,
+      "token_status": "unknown_not_reported"
+    },
+    {
+      "batch": "skillup-c11-after02",
+      "group": "after",
+      "case_id": "p2-04-image-compression-regression",
+      "status": "PASS",
+      "skillup_turns": 10,
+      "judge_checks": {
+        "exit_zero": true,
+        "input_unchanged": true,
+        "docx_opens": true,
+        "document_xml_unchanged": true,
+        "media_smaller": true,
+        "package_smaller": true,
+        "images_decode": true,
+        "dimensions_preserved_or_scaled": true,
+        "alpha_preserved": true
+      },
+      "controls": {
+        "received_max_turns": 12,
+        "cli_max_turns": 12,
+        "received_timeout_seconds": 240,
+        "effective_timeout_seconds": 240,
+        "skillup_turns_semantics": "reported_by_skillup_not_assumed_to_be_cli_agent_rounds"
+      },
+      "artifact_sha256": "8c75bfcb2c21b61adbe66e5bee1f32238ed0abc02aa30b6bdd4269a708fa29ea",
+      "input_tokens": null,
+      "output_tokens": null,
+      "token_status": "unknown_not_reported"
+    },
+    {
+      "batch": "skillup-c11-after03",
+      "group": "after",
+      "case_id": "p2-04-image-compression-regression",
+      "status": "PASS",
+      "skillup_turns": 6,
+      "judge_checks": {
+        "exit_zero": true,
+        "input_unchanged": true,
+        "docx_opens": true,
+        "document_xml_unchanged": true,
+        "media_smaller": true,
+        "package_smaller": true,
+        "images_decode": true,
+        "dimensions_preserved_or_scaled": true,
+        "alpha_preserved": true
+      },
+      "controls": {
+        "received_max_turns": 12,
+        "cli_max_turns": 12,
+        "received_timeout_seconds": 240,
+        "effective_timeout_seconds": 240,
+        "skillup_turns_semantics": "reported_by_skillup_not_assumed_to_be_cli_agent_rounds"
+      },
+      "artifact_sha256": "8c75bfcb2c21b61adbe66e5bee1f32238ed0abc02aa30b6bdd4269a708fa29ea",
+      "input_tokens": null,
+      "output_tokens": null,
+      "token_status": "unknown_not_reported"
+    },
+    {
+      "batch": "skillup-c11-normal01",
+      "group": "normal_after",
+      "case_id": "real-05-normal-body-edit-control",
+      "status": "PASS",
+      "skillup_turns": 16,
+      "judge_checks": {
+        "exit_zero": true,
+        "input_unchanged": true,
+        "new_marker_present": true,
+        "old_marker_absent": true,
+        "table_preserved": true
+      },
+      "controls": {
+        "received_max_turns": 16,
+        "cli_max_turns": 16,
+        "received_timeout_seconds": 240,
+        "effective_timeout_seconds": 240,
+        "skillup_turns_semantics": "reported_by_skillup_not_assumed_to_be_cli_agent_rounds"
+      },
+      "artifact_sha256": null,
+      "input_tokens": null,
+      "output_tokens": null,
+      "token_status": "unknown_not_reported"
+    }
+  ],
+  "scope": "One observed Hermes image-compression failure and one normal Word edit control; not a whole-skill or cross-model conclusion.",
+  "privacy": "Raw responses, transcripts, session IDs, credentials and live databases are excluded."
+}

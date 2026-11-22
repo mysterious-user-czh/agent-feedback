@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent Feedback Skill Contracts",
+  "type": "array",
+  "items": {"$ref": "#/$defs/contract"},
+  "$defs": {
+    "contract": {
+      "type": "object",
+      "required": ["skill", "version"],
+      "properties": {
+        "skill": {"type": "string", "minLength": 1},
+        "version": {"type": "integer", "minimum": 1},
+        "trigger": {
+          "type": "object",
+          "properties": {
+            "required": {"type": "array", "items": {"$ref": "#/$defs/rule"}},
+            "forbidden": {"type": "array", "items": {"$ref": "#/$defs/rule"}}
+          },
+          "additionalProperties": false
+        },
+        "execution": {
+          "type": "object",
+          "properties": {
+            "read_first": {"type": "boolean"},
+            "max_selections": {"type": "integer", "minimum": 1},
+            "allowed_tools": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+          },
+          "additionalProperties": false
+        },
+        "output": {
+          "type": "object",
+          "properties": {
+            "artifact_extension": {"type": "string", "pattern": "^\\.[A-Za-z0-9]+$"}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "rule": {
+      "type": "object",
+      "required": ["id", "patterns"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+        "patterns": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+      },
+      "additionalProperties": false
+    }
+  }
+}

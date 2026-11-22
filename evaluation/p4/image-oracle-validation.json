@@ -1,0 +1,58 @@
+{
+  "scripts_tested": 2,
+  "rgb_pass": 2,
+  "alpha_pass": 2,
+  "default_quality": 85,
+  "results": [
+    {
+      "script": "microsoft-office",
+      "kind": "rgb",
+      "width": 1600,
+      "height": 1067,
+      "alpha": false,
+      "document_xml_unchanged": true,
+      "decodes": true
+    },
+    {
+      "script": "microsoft-office",
+      "kind": "alpha",
+      "width": 1600,
+      "height": 1067,
+      "alpha": true,
+      "document_xml_unchanged": true,
+      "decodes": true
+    },
+    {
+      "script": "docx",
+      "kind": "rgb",
+      "width": 1600,
+      "height": 1067,
+      "alpha": false,
+      "document_xml_unchanged": true,
+      "decodes": true
+    },
+    {
+      "script": "docx",
+      "kind": "alpha",
+      "width": 1600,
+      "height": 1067,
+      "alpha": true,
+      "document_xml_unchanged": true,
+      "decodes": true
+    }
+  ],
+  "oracle_positive": {
+    "exit_zero": true,
+    "input_unchanged": true,
+    "docx_opens": true,
+    "document_xml_unchanged": true,
+    "media_smaller": true,
+    "package_smaller": true,
+    "images_decode": true,
+    "dimensions_preserved_or_scaled": true,
+    "alpha_preserved": true
+  },
+  "corrupt_image_rejected": true,
+  "wrong_dimensions_rejected": true,
+  "scope": "Deterministic script and judge tests; real isolated Agent regression is separate."
+}

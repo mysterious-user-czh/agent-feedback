@@ -1,0 +1,20 @@
+{
+  "version": "0.11.1",
+  "install_source": "built_wheel_not_editable",
+  "clean_generic_host": true,
+  "real_second_llm_agent": false,
+  "skill_archive_files": 2,
+  "skill_crc": "pass",
+  "mcp_stdio": "4 tools; full chain pass",
+  "session_result_import": "pass",
+  "p3_states": {
+    "routing": "unknown",
+    "execution": "pass",
+    "artifact": "pass",
+    "exit": "pass",
+    "outcome": "pass"
+  },
+  "temporary_files_remaining": [],
+  "scope": "Clean installation and interface validation only; does not include skill-up or a real Hermes task.",
+  "privacy": "No credentials, live configuration, raw traces or production database copied to the clean host."
+}

@@ -1,0 +1,282 @@
+[
+  {
+    "session_id": "session-001",
+    "message_id": 65,
+    "predicted_segment": "hermes:session-001:segment:8",
+    "predicted_relation": "continuation",
+    "predicted_source": "background"
+  },
+  {
+    "session_id": "session-004",
+    "message_id": 707,
+    "predicted_segment": "hermes:session-004:segment:669",
+    "predicted_relation": "continuation",
+    "predicted_source": "background"
+  },
+  {
+    "session_id": "session-005",
+    "message_id": 1275,
+    "predicted_segment": "hermes:session-005:segment:1271",
+    "predicted_relation": "correction",
+    "predicted_source": "user"
+  },
+  {
+    "session_id": "session-005",
+    "message_id": 1382,
+    "predicted_segment": "hermes:session-005:segment:1378",
+    "predicted_relation": "correction",
+    "predicted_source": "user"
+  },
+  {
+    "session_id": "session-007",
+    "message_id": 2708,
+    "predicted_segment": "hermes:session-007:segment:2694",
+    "predicted_relation": "continuation",
+    "predicted_source": "background"
+  },
+  {
+    "session_id": "session-008",
+    "message_id": 2805,
+    "predicted_segment": "hermes:session-008:segment:2765",
+    "predicted_relation": "continuation",
+    "predicted_source": "background"
+  },
+  {
+    "session_id": "session-008",
+    "message_id": 2821,
+    "predicted_segment": "hermes:session-008:segment:2765",
+    "predicted_relation": "continuation",
+    "predicted_source": "background"
+  },
+  {
+    "session_id": "session-011",
+    "message_id": 3128,
+    "predicted_segment": "hermes:session-011:segment:3128",
+    "predicted_relation": "new_task",
+    "predicted_source": "user"
+  },
+  {
+    "session_id": "session-012",
+    "message_id": 3297,
+    "predicted_segment": "hermes:session-012:segment:3297",
+    "predicted_relation": "new_task",
+    "predicted_source": "user"
+  },
+  {
+    "session_id": "session-012",
+    "message_id": 3589,
+    "predicted_segment": "hermes:session-012:segment:3589",
+    "predicted_relation": "new_task",
+    "predicted_source": "user"
+  },
+  {
+    "session_id": "session-012",
+    "message_id": 4591,
+    "predicted_segment": "hermes:session-012:segment:4585",
+    "predicted_relation": "continuation",
+    "predicted_source": "background"
+  },
+  {
+    "session_id": "session-012",
+    "message_id": 4728,
+    "predicted_segment": "hermes:session-012:segment:4712",
+    "predicted_relation": "continuation",
+    "predicted_source": "background"
+  },
+  {
+    "session_id": "session-012",
+    "message_id": 4827,
+    "predicted_segment": "hermes:session-012:segment:4827",
+    "predicted_relation": "new_task",
+    "predicted_source": "user"
+  },
+  {
+    "session_id": "session-012",
+    "message_id": 5104,
+    "predicted_segment": "hermes:session-012:segment:5104",
+    "predicted_relation": "new_task",
+    "predicted_source": "user"
+  },
+  {
+    "session_id": "session-014",
+    "message_id": 3908,
+    "predicted_segment": "hermes:session-014:segment:3897",
+    "predicted_relation": "correction",
+    "predicted_source": "user"
+  },
+  {
+    "session_id": "session-015",
+    "message_id": 4153,
+    "predicted_segment": "hermes:session-015:segment:4153",
+    "predicted_relation": "new_task",
+    "predicted_source": "user"
+  },
+  {
+    "session_id": "session-018",
+    "message_id": 4737,
+    "predicted_segment": "hermes:session-018:segment:4737",
+    "predicted_relation": "new_task",
+    "predicted_source": "user"
+  },
+  {
+    "session_id": "session-019",
+    "message_id": 4743,
+    "predicted_segment": "hermes:session-019:segment:4743",
+    "predicted_relation": "new_task",
+    "predicted_source": "user"
+  },
+  {
+    "session_id": "session-021",
+    "message_id": 5137,
+    "predicted_segment": "hermes:session-021:segment:5130",
+    "predicted_relation": "continuation",
+    "predicted_source": "background"
+  },
+  {
+    "session_id": "session-023",
+    "message_id": 5990,
+    "predicted_segment": "hermes:session-023:segment:5917",
+    "predicted_relation": "continuation",
+    "predicted_source": "background"
+  },
+  {
+    "session_id": "session-024",
+    "message_id": 6143,
+    "predicted_segment": "hermes:session-024:segment:6138",
+    "predicted_relation": "continuation",
+    "predicted_source": "background"
+  },
+  {
+    "session_id": "session-025",
+    "message_id": 6273,
+    "predicted_segment": "hermes:session-025:segment:6232",
+    "predicted_relation": "continuation",
+    "predicted_source": "background"
+  },
+  {
+    "session_id": "session-026",
+    "message_id": 6305,
+    "predicted_segment": "hermes:session-026:segment:6304",
+    "predicted_relation": "continuation",
+    "predicted_source": "background"
+  },
+  {
+    "session_id": "session-028",
+    "message_id": 6349,
+    "predicted_segment": "hermes:session-028:segment:6349",
+    "predicted_relation": "new_task",
+    "predicted_source": "user"
+  },
+  {
+    "session_id": "session-029",
+    "message_id": 6360,
+    "predicted_segment": "hermes:session-029:segment:6353",
+    "predicted_relation": "continuation",
+    "predicted_source": "background"
+  },
+  {
+    "session_id": "session-032",
+    "message_id": 6931,
+    "predicted_segment": "hermes:session-032:segment:6931",
+    "predicted_relation": "new_task",
+    "predicted_source": "user"
+  },
+  {
+    "session_id": "session-032",
+    "message_id": 6937,
+    "predicted_segment": "hermes:session-032:segment:6931",
+    "predicted_relation": "correction",
+    "predicted_source": "user"
+  },
+  {
+    "session_id": "session-032",
+    "message_id": 6986,
+    "predicted_segment": "hermes:session-032:segment:6974",
+    "predicted_relation": "correction",
+    "predicted_source": "user"
+  },
+  {
+    "session_id": "session-032",
+    "message_id": 7426,
+    "predicted_segment": "hermes:session-032:segment:6996",
+    "predicted_relation": "child_event",
+    "predicted_source": "delegation"
+  },
+  {
+    "session_id": "session-032",
+    "message_id": 7601,
+    "predicted_segment": "hermes:session-032:segment:6996",
+    "predicted_relation": "child_event",
+    "predicted_source": "delegation"
+  },
+  {
+    "session_id": "session-032",
+    "message_id": 7830,
+    "predicted_segment": "hermes:session-032:segment:6996",
+    "predicted_relation": "continuation",
+    "predicted_source": "background"
+  },
+  {
+    "session_id": "session-032",
+    "message_id": 7833,
+    "predicted_segment": "hermes:session-032:segment:6996",
+    "predicted_relation": "child_event",
+    "predicted_source": "delegation"
+  },
+  {
+    "session_id": "session-032",
+    "message_id": 7957,
+    "predicted_segment": "hermes:session-032:segment:6996",
+    "predicted_relation": "child_event",
+    "predicted_source": "delegation"
+  },
+  {
+    "session_id": "session-032",
+    "message_id": 8595,
+    "predicted_segment": "hermes:session-032:segment:8120",
+    "predicted_relation": "child_event",
+    "predicted_source": "delegation"
+  },
+  {
+    "session_id": "session-032",
+    "message_id": 8835,
+    "predicted_segment": "hermes:session-032:segment:8678",
+    "predicted_relation": "correction",
+    "predicted_source": "user"
+  },
+  {
+    "session_id": "session-032",
+    "message_id": 8846,
+    "predicted_segment": "hermes:session-032:segment:8678",
+    "predicted_relation": "continuation",
+    "predicted_source": "background"
+  },
+  {
+    "session_id": "session-032",
+    "message_id": 9036,
+    "predicted_segment": "hermes:session-032:segment:8873",
+    "predicted_relation": "child_event",
+    "predicted_source": "delegation"
+  },
+  {
+    "session_id": "session-032",
+    "message_id": 9230,
+    "predicted_segment": "hermes:session-032:segment:8873",
+    "predicted_relation": "child_event",
+    "predicted_source": "delegation"
+  },
+  {
+    "session_id": "session-032",
+    "message_id": 11203,
+    "predicted_segment": "hermes:session-032:segment:8873",
+    "predicted_relation": "child_event",
+    "predicted_source": "delegation"
+  },
+  {
+    "session_id": "session-033",
+    "message_id": 6936,
+    "predicted_segment": "hermes:session-033:segment:6935",
+    "predicted_relation": "continuation",
+    "predicted_source": "background"
+  }
+]

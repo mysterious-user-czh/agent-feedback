@@ -1,0 +1,33 @@
+{
+  "result": "PASS",
+  "version": "0.11.1",
+  "package_files": 12,
+  "mcp_tools_discovered": 4,
+  "collector_first_coverage_passed": true,
+  "coverage": {
+    "sessions": "45/45",
+    "messages": "7864/7864",
+    "skill_selections": "71/71",
+    "tool_failures": "266/266",
+    "tool_cancellations": "14/14",
+    "tool_error_or_cancel_events": "280/280"
+  },
+  "collector_process_and_child_running_before_uninstall": true,
+  "duplicate_install_refused": true,
+  "duplicate_install_config_skill_process_unchanged": true,
+  "verify_script_including_collector": "PASS",
+  "uninstall_own_mcp_and_skill_removed": true,
+  "uninstall_collector_process_tree_stopped": true,
+  "unrelated_config_preserved": true,
+  "feedback_data_preserved": true,
+  "source_database_hashes_unchanged": true,
+  "real_hermes_home_modified": false,
+  "package_sha256": "e1d471c321135dda726484578136c0f70b7d98de1b47a38f4d965a04b1264b5f",
+  "package_crc": "PASS",
+  "package_unique_files": 12,
+  "powershell_syntax": "7/7 PASS",
+  "collector_interval_seconds": 60,
+  "reboot_persistent_service_installed": false,
+  "scope": "Isolated install, automatic first full collection, status/verify, duplicate refusal and complete uninstall lifecycle",
+  "limits": "Not a native Hermes catalog plugin, realtime hook, semantic routing truth or artifact oracle"
+}

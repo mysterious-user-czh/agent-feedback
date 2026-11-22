@@ -1,0 +1,138 @@
+[
+  {
+    "skill": "microsoft-office",
+    "version": 1,
+    "trigger": {
+      "required": [
+        {"id": "word_to_pdf", "patterns": ["转(?:成|为)?\\s*PDF", "保存成\\s*PDF", "导出为\\s*PDF"]}
+      ],
+      "forbidden": [
+        {"id": "pure_excel", "patterns": ["^[^Word文档]*(?:xlsx|Excel).*(?:公式|透视表)"]}
+      ]
+    },
+    "execution": {"read_first": true, "max_selections": 3, "allowed_tools": ["skill_view", "terminal", "python"]},
+    "output": {"artifact_extension": ".pdf"}
+  },
+  {
+    "skill": "docx-editing",
+    "version": 1,
+    "trigger": {
+      "required": [
+        {"id": "body_editing", "patterns": ["修改正文", "公式.*重新编", "跨页.*表格"]}
+      ],
+      "forbidden": [
+        {"id": "image_compression", "patterns": ["截图.*压", "图片.*压缩"]}
+      ]
+    },
+    "execution": {"read_first": true, "max_selections": 2}
+  },
+  {
+    "skill": "docx",
+    "version": 1,
+    "trigger": {
+      "required": [
+        {"id": "word_review", "patterns": ["(?:Word|docx).*(?:修订|批注)", "(?:修订|批注).*(?:Word|docx)"]},
+        {"id": "word_template", "patterns": ["(?:Word|docx).*模板.*(?:填|占位)", "\\{\\{[^}]+\\}\\}.*(?:填|模板)"]},
+        {"id": "word_corruption", "patterns": ["(?:Word|docx).*(?:损坏|打不开|无法打开)"]}
+      ],
+      "forbidden": [
+        {"id": "legacy_doc", "patterns": ["(?:旧版|老格式|legacy).*\\.doc\\b", "\\.doc\\b.*(?:旧版|老格式|legacy)"]}
+      ]
+    },
+    "execution": {"read_first": true, "max_selections": 3}
+  },
+  {
+    "skill": "hermes-agent",
+    "version": 1,
+    "trigger": {
+      "required": [
+        {"id": "hermes_general_setup", "patterns": ["(?:配置|设置|安装) Hermes", "Hermes.*(?:模型|provider|API Key|OAuth).*(?:配置|设置|怎么|如何)"]}
+      ],
+      "forbidden": [
+        {"id": "desktop_build_lag", "patterns": ["Hermes.*(?:桌面|desktop).*(?:不显示|缺失|滞后| rebuild|重新构建)"]},
+        {"id": "gateway_outage", "patterns": ["(?:gateway|网关).*(?:离线|掉线|不回复|警告)", "微信.*(?:机器人|bot).*(?:不回复|离线)"]},
+        {"id": "in_repo_authoring", "patterns": ["(?:仓库|repo|分支|commit).*SKILL\\.md"]}
+      ]
+    },
+    "execution": {"read_first": true, "max_selections": 3}
+  },
+  {
+    "skill": "hermes-desktop-maintenance",
+    "version": 1,
+    "trigger": {
+      "required": [
+        {"id": "desktop_feature_missing", "patterns": ["Hermes.*(?:桌面|desktop).*(?:不显示|缺失|没有).*", "(?:桌面插件|desktop plugin).*(?:不显示|没出现|未出现)"]},
+        {"id": "desktop_rebuild", "patterns": ["Hermes.*(?:桌面|desktop).*(?:重新构建|rebuild|构建滞后)"]}
+      ],
+      "forbidden": [
+        {"id": "not_gateway", "patterns": ["(?:gateway|网关).*(?:离线|掉线|不回复)"]}
+      ]
+    },
+    "execution": {"read_first": true, "max_selections": 2}
+  },
+  {
+    "skill": "hermes-gateway-ops",
+    "version": 1,
+    "trigger": {
+      "required": [
+        {"id": "gateway_health", "patterns": ["Hermes.*(?:gateway|网关).*(?:离线|掉线|警告|不回复)", "微信.*(?:机器人|bot).*(?:不回复|离线)"]}
+      ],
+      "forbidden": [
+        {"id": "not_desktop_ui", "patterns": ["(?:桌面插件|desktop plugin).*(?:不显示|没出现|未出现)"]}
+      ]
+    },
+    "execution": {"read_first": true, "max_selections": 2}
+  },
+  {
+    "skill": "hermes-agent-skill-authoring",
+    "version": 1,
+    "trigger": {
+      "required": [
+        {"id": "in_repo_skill", "patterns": ["(?:仓库|repo|分支|commit).*SKILL\\.md", "SKILL\\.md.*(?:仓库|repo|分支|commit)"]}
+      ],
+      "forbidden": [
+        {"id": "personal_skill_only", "patterns": ["(?:个人技能|本地技能|~/.hermes/skills).*(?:创建|新建|添加)"]}
+      ]
+    },
+    "execution": {"read_first": true, "max_selections": 2}
+  },
+  {
+    "skill": "llm-api-relay-evaluation",
+    "version": 1,
+    "trigger": {
+      "required": [
+        {"id": "relay_selection", "patterns": ["(?:API|模型).*(?:中转站|中转 API|API 站).*(?:分析|选择|套餐|充值|怎么样)", "New API.*(?:套餐|倍率|价格|选型)"]}
+      ],
+      "forbidden": [
+        {"id": "proxy_subscription", "patterns": ["(?:代理机场|机场订阅|Clash|v2rayN).*(?:节点|订阅|诊断|上不了网)"]}
+      ]
+    },
+    "execution": {"read_first": true, "max_selections": 2}
+  },
+  {
+    "skill": "hyperframes",
+    "version": 1,
+    "trigger": {
+      "required": [
+        {"id": "hyperframes_video", "patterns": ["HyperFrames.*(?:视频|影片|动画|渲染)", "用 HyperFrames"]}
+      ],
+      "forbidden": [
+        {"id": "slide_deck_only", "patterns": ["(?:只|仅)?(?:做|制作|生成).*(?:PPT|幻灯片)(?!.*(?:视频|影片))"]}
+      ]
+    },
+    "execution": {"read_first": true, "max_selections": 3}
+  },
+  {
+    "skill": "hyperframes-cli",
+    "version": 1,
+    "trigger": {
+      "required": [
+        {"id": "cli_failure", "patterns": ["npx hyperframes.*(?:报错|失败|错误)", "HyperFrames.*(?:CLI|命令).*(?:报错|失败|怎么|如何)"]}
+      ],
+      "forbidden": [
+        {"id": "plain_ffmpeg", "patterns": ["(?:只用|仅用)(?:普通)?\\s*ffmpeg.*(?:剪辑|转码|压缩)"]}
+      ]
+    },
+    "execution": {"read_first": true, "max_selections": 3}
+  }
+]

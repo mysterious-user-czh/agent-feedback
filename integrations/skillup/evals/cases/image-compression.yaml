@@ -1,0 +1,14 @@
+id: p2-04-image-compression-regression
+title: Observed missing-artifact failure from the frozen p2-clean batch
+input:
+  prompt: |
+    输入文件 fixtures/word-image.docx。把这个 Word 里的截图压缩一下，正文不要改。输出到 artifacts/compressed.docx。
+context:
+  repo_fixture: evals/fixtures/image-compression/workspace
+expect:
+  files_exist:
+    - artifacts/compressed.docx
+judge:
+  type: script
+  script_path: evals/scripts/check_image_compression.ps1
+  timeout_seconds: 30

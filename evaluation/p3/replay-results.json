@@ -1,0 +1,237 @@
+{
+  "schema": "agent-feedback-p3-replay-v1",
+  "cases": 34,
+  "coverage_check": {
+    "covered": 34,
+    "baseline": 34,
+    "missing": []
+  },
+  "top1_scored": false,
+  "top1_note": "Golden cases define contract outcomes, not reliable Top1 labels.",
+  "metrics": {
+    "matrix": {
+      "pass": {
+        "pass": 14,
+        "fail": 0,
+        "unknown": 1
+      },
+      "fail": {
+        "pass": 0,
+        "fail": 19,
+        "unknown": 0
+      }
+    },
+    "labeled": 34,
+    "judged": 33,
+    "abstained": 1,
+    "correct_when_judged": 33,
+    "accuracy_when_judged": 1.0,
+    "coverage": 0.9705882352941176
+  },
+  "rows": [
+    {
+      "id": "g01",
+      "actual": "fail",
+      "predicted": "fail",
+      "reason": "deterministic_contract_violation"
+    },
+    {
+      "id": "g02",
+      "actual": "pass",
+      "predicted": "pass",
+      "reason": "required_contract_satisfied"
+    },
+    {
+      "id": "g03",
+      "actual": "fail",
+      "predicted": "fail",
+      "reason": "deterministic_contract_violation"
+    },
+    {
+      "id": "g04",
+      "actual": "pass",
+      "predicted": "pass",
+      "reason": "required_contract_satisfied"
+    },
+    {
+      "id": "g05",
+      "actual": "fail",
+      "predicted": "fail",
+      "reason": "deterministic_contract_violation"
+    },
+    {
+      "id": "g06",
+      "actual": "pass",
+      "predicted": "pass",
+      "reason": "required_contract_satisfied"
+    },
+    {
+      "id": "g07",
+      "actual": "pass",
+      "predicted": "unknown",
+      "reason": "no_reliable_routing_truth"
+    },
+    {
+      "id": "g08",
+      "actual": "pass",
+      "predicted": "pass",
+      "reason": "required_contract_satisfied"
+    },
+    {
+      "id": "g09",
+      "actual": "pass",
+      "predicted": "pass",
+      "reason": "required_contract_satisfied"
+    },
+    {
+      "id": "g10",
+      "actual": "fail",
+      "predicted": "fail",
+      "reason": "deterministic_contract_violation"
+    },
+    {
+      "id": "g11",
+      "actual": "fail",
+      "predicted": "fail",
+      "reason": "deterministic_contract_violation"
+    },
+    {
+      "id": "g12",
+      "actual": "pass",
+      "predicted": "pass",
+      "reason": "required_contract_satisfied"
+    },
+    {
+      "id": "g13",
+      "actual": "fail",
+      "predicted": "fail",
+      "reason": "deterministic_contract_violation"
+    },
+    {
+      "id": "g14",
+      "actual": "pass",
+      "predicted": "pass",
+      "reason": "required_contract_satisfied"
+    },
+    {
+      "id": "g15",
+      "actual": "fail",
+      "predicted": "fail",
+      "reason": "deterministic_contract_violation"
+    },
+    {
+      "id": "g16",
+      "actual": "fail",
+      "predicted": "fail",
+      "reason": "deterministic_contract_violation"
+    },
+    {
+      "id": "g17",
+      "actual": "pass",
+      "predicted": "pass",
+      "reason": "required_contract_satisfied"
+    },
+    {
+      "id": "g18",
+      "actual": "fail",
+      "predicted": "fail",
+      "reason": "deterministic_contract_violation"
+    },
+    {
+      "id": "g19",
+      "actual": "pass",
+      "predicted": "pass",
+      "reason": "required_contract_satisfied"
+    },
+    {
+      "id": "g20",
+      "actual": "fail",
+      "predicted": "fail",
+      "reason": "deterministic_contract_violation"
+    },
+    {
+      "id": "g21",
+      "actual": "pass",
+      "predicted": "pass",
+      "reason": "required_contract_satisfied"
+    },
+    {
+      "id": "g22",
+      "actual": "fail",
+      "predicted": "fail",
+      "reason": "deterministic_contract_violation"
+    },
+    {
+      "id": "g23",
+      "actual": "fail",
+      "predicted": "fail",
+      "reason": "deterministic_contract_violation"
+    },
+    {
+      "id": "g24",
+      "actual": "pass",
+      "predicted": "pass",
+      "reason": "required_contract_satisfied"
+    },
+    {
+      "id": "g25",
+      "actual": "fail",
+      "predicted": "fail",
+      "reason": "deterministic_contract_violation"
+    },
+    {
+      "id": "g26",
+      "actual": "fail",
+      "predicted": "fail",
+      "reason": "deterministic_contract_violation"
+    },
+    {
+      "id": "g27",
+      "actual": "pass",
+      "predicted": "pass",
+      "reason": "required_contract_satisfied"
+    },
+    {
+      "id": "g28",
+      "actual": "fail",
+      "predicted": "fail",
+      "reason": "deterministic_contract_violation"
+    },
+    {
+      "id": "g29",
+      "actual": "fail",
+      "predicted": "fail",
+      "reason": "deterministic_contract_violation"
+    },
+    {
+      "id": "g30",
+      "actual": "pass",
+      "predicted": "pass",
+      "reason": "required_contract_satisfied"
+    },
+    {
+      "id": "g31",
+      "actual": "fail",
+      "predicted": "fail",
+      "reason": "deterministic_contract_violation"
+    },
+    {
+      "id": "g32",
+      "actual": "fail",
+      "predicted": "fail",
+      "reason": "deterministic_contract_violation"
+    },
+    {
+      "id": "g33",
+      "actual": "pass",
+      "predicted": "pass",
+      "reason": "required_contract_satisfied"
+    },
+    {
+      "id": "g34",
+      "actual": "fail",
+      "predicted": "fail",
+      "reason": "deterministic_contract_violation"
+    }
+  ]
+}

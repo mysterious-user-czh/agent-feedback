@@ -1,0 +1,30 @@
+{
+  "mlflow_version": "3.18.0",
+  "tracking": "local_file_only",
+  "logged_runs": 2,
+  "retrieved_by_version": 2,
+  "results": [
+    {
+      "candidate": "before",
+      "run_id": "436f8f60ebf84f8fb422d76b1c6c39d2",
+      "status": "ERROR",
+      "code_version": "0.11.1",
+      "source_hash_match": true,
+      "version_fields_match": true,
+      "sanitized_artifact_retrieved": true
+    },
+    {
+      "candidate": "after",
+      "run_id": "f4606e96a0134e23a548d795a53c0d2b",
+      "status": "PASS",
+      "code_version": "0.11.1",
+      "source_hash_match": true,
+      "version_fields_match": true,
+      "sanitized_artifact_retrieved": true
+    }
+  ],
+  "sensitive_keys_found": 0,
+  "remote_upload": false,
+  "core_dependency": "optional; core and MCP do not import mlflow",
+  "token_metrics": "unknown_not_reported"
+}

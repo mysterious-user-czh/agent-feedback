@@ -1,0 +1,13 @@
+{
+  "batch_id": "p4-capture-spike",
+  "status": "frozen-before-run",
+  "budget": {"max_turns": 8, "timeout_seconds": 300, "cases": 1},
+  "tasks": [
+    {
+      "task_id": "capture-01-text-copy",
+      "query": "读取 fixtures/input.txt，在 artifacts/output.txt 写入完全相同的内容。不要修改输入，不要调用任何 Skill。",
+      "deny": [],
+      "oracle": "output.txt exact content P4_CAPTURE_OK; no skill selected"
+    }
+  ]
+}

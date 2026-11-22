@@ -1,0 +1,14 @@
+id: real-05-normal-body-edit-control
+title: Normal Word body edit must not regress after the compression instruction fix
+input:
+  prompt: |
+    输入 fixtures/body.docx。把 OLD_BODY_VALUE 改为 NEW_BODY_VALUE，其他内容不变，输出 artifacts/body-edited.docx。
+context:
+  repo_fixture: evals/fixtures/body-edit/workspace
+expect:
+  files_exist:
+    - artifacts/body-edited.docx
+judge:
+  type: script
+  script_path: evals/scripts/check_body_edit.ps1
+  timeout_seconds: 30

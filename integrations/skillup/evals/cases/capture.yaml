@@ -1,0 +1,15 @@
+id: capture-01-text-copy
+title: Hermes custom engine live artifact capture
+input:
+  prompt: |
+    读取 fixtures/input.txt，在 artifacts/output.txt 写入完全相同的内容。不要修改输入，不要调用任何 Skill。
+context:
+  repo_fixture: evals/fixtures/workspace
+expect:
+  exit_code: 0
+  files_exist:
+    - artifacts/output.txt
+judge:
+  type: script
+  script_path: evals/scripts/check_capture.ps1
+  timeout_seconds: 30

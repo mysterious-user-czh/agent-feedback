@@ -1,0 +1,32 @@
+schema_version: v1alpha1
+environment:
+  type: none
+skills: []
+engine:
+  name: deterministic-reference
+  custom:
+    transport: local
+    conversation_mode: batch
+    timeout_seconds: 30
+    response_format: session_result
+    local:
+      command: ${AGENT_FEEDBACK_PYTHON}
+      args:
+        - ${AGENT_FEEDBACK_ROOT}/integrations/skillup/reference_engine.py
+        - --input
+        - ${input_file}
+        - --output
+        - ${output_file}
+      cwd: ${workspace}
+      input_file: ${input_file}
+      output_file: ${output_file}
+cases:
+  files:
+    - evals/cases/capture.yaml
+  defaults:
+    timeout_seconds: 30
+    max_turns: 1
+  parallelism: 1
+report:
+  formats: [json]
+  artifacts: [transcript]

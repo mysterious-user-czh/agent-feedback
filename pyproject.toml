@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-feedback-local"
+version = "0.11.1"
+description = "Local-first, cross-agent feedback collection and deterministic evidence review"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "agent-feedback contributors"}]
+dependencies = ["jsonschema>=4.18,<5"]
+
+[project.optional-dependencies]
+mcp = ["mcp>=1.12,<3"]
+mlflow = ["mlflow-skinny>=2.15,<4"]
+dev = ["mcp>=1.12,<3"]
+
+[project.scripts]
+agent-feedback = "agent_feedback.cli:main"
+agent-feedback-mcp = "agent_feedback.mcp_server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+agent_feedback = ["schemas/*.json", "routing-policy.json"]

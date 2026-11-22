@@ -1,0 +1,273 @@
+{
+  "schema_version": 1,
+  "queue": "7 correction candidates + top 10 tool-failure tasks; unique tasks only",
+  "coverage": "17/17",
+  "queue_total": 17,
+  "reviewed_total": 17,
+  "coverage_difference": 0,
+  "classification_counts": {
+    "confirmed_issue": 6,
+    "false_positive": 4,
+    "needs_more_evidence": 7
+  },
+  "confirmed_issue_tasks": 6,
+  "confirmed_underlying_issues": 5,
+  "duplicate_underlying_issue": {
+    "task_ids": [
+      "T06",
+      "T07"
+    ],
+    "counted_once": true
+  },
+  "correction_candidate_review": {
+    "total": 7,
+    "confirmed_issue": 5,
+    "false_positive": 2
+  },
+  "selected_closed_loop_case": "T03",
+  "selected_case_reason": "Reproducible agent-feedback false positive in correction detection; not asserted to be a skill-routing failure.",
+  "baseline_feedback_db_sha256": "f9a4d190a9eee60ceeb6b729aa4504c20cbfc645eb14b4ec2ee50555ca663c77",
+  "baseline_modified": false,
+  "reviewed_database": "validation/triage-v0111/reviewed-feedback.db",
+  "privacy": "Public result contains labels, counts and message IDs only; raw goals, conversations and session IDs remain in validation private files.",
+  "limits": "Tool failures are not routing failures. Needs-more-evidence items are not counted as success or failure. Historical artifacts were not independently reopened.",
+  "items": [
+    {
+      "triage_id": "T01",
+      "task_id": "task_54f660cc4ea74e49b2ecf41faf52b049",
+      "reasons": [
+        "correction_candidate"
+      ],
+      "classification": "confirmed_issue",
+      "root_cause": "unsupported_external_claims_and_attribution",
+      "failure_stage": "unknown",
+      "outcome": "failure",
+      "source_message_ids": [
+        6995
+      ],
+      "next_action": "保留为输出质量真问题；不得归因为技能路由。"
+    },
+    {
+      "triage_id": "T02",
+      "task_id": "task_dd9ed8ea58a94840bd9f45095a13496a",
+      "reasons": [
+        "correction_candidate"
+      ],
+      "classification": "false_positive",
+      "root_cause": "new_design_requirements_not_failure_correction",
+      "failure_stage": "unknown",
+      "outcome": "unknown",
+      "source_message_ids": [],
+      "next_action": "人工撤销 observed 纠正候选；保留为新需求。"
+    },
+    {
+      "triage_id": "T03",
+      "task_id": "task_0f4143304cf54dd98ec6f7f6dbec346e",
+      "reasons": [
+        "correction_candidate"
+      ],
+      "classification": "false_positive",
+      "root_cause": "educational_example_matched_weak_correction_keyword",
+      "failure_stage": "unknown",
+      "outcome": "unknown",
+      "source_message_ids": [],
+      "next_action": "修复 agent-feedback 的纠正识别，并冻结同例回归。"
+    },
+    {
+      "triage_id": "T04",
+      "task_id": "task_f4384dd2e5b34285935e6526a2199983",
+      "reasons": [
+        "correction_candidate"
+      ],
+      "classification": "confirmed_issue",
+      "root_cause": "proposal_contained_verified_factual_errors",
+      "failure_stage": "unknown",
+      "outcome": "failure",
+      "source_message_ids": [
+        6953
+      ],
+      "next_action": "保留为输出质量真问题；不得归因为技能路由。"
+    },
+    {
+      "triage_id": "T05",
+      "task_id": "task_e9f984585a2e4d1d885c4eaaefa3ffb3",
+      "reasons": [
+        "correction_candidate"
+      ],
+      "classification": "confirmed_issue",
+      "root_cause": "assistant_misunderstood_requested_workflow",
+      "failure_stage": "requirements",
+      "outcome": "failure",
+      "source_message_ids": [
+        3909
+      ],
+      "next_action": "按需求理解问题处理，不改技能描述。"
+    },
+    {
+      "triage_id": "T06",
+      "task_id": "task_220ca4f1a2734bfcb24e6a681aea3042",
+      "reasons": [
+        "correction_candidate"
+      ],
+      "classification": "confirmed_issue",
+      "root_cause": "wrong_formula_references",
+      "failure_stage": "requirements",
+      "outcome": "failure",
+      "source_message_ids": [
+        1383
+      ],
+      "next_action": "与 T07 合并为一个底层公式指代问题。"
+    },
+    {
+      "triage_id": "T07",
+      "task_id": "task_94993e0e40ae4f9d8b0284a95c6fa330",
+      "reasons": [
+        "correction_candidate"
+      ],
+      "classification": "confirmed_issue",
+      "root_cause": "wrong_formula_references",
+      "failure_stage": "requirements",
+      "outcome": "failure",
+      "source_message_ids": [
+        1276
+      ],
+      "next_action": "与 T06 合并为一个底层公式指代问题。"
+    },
+    {
+      "triage_id": "T08",
+      "task_id": "task_6cdd7ead80b8444d9abced7abbcf2e50",
+      "reasons": [
+        "top10_tool_failures"
+      ],
+      "classification": "confirmed_issue",
+      "root_cause": "repeated_vision_timeouts_then_interrupted",
+      "failure_stage": "environment",
+      "outcome": "failure",
+      "source_message_ids": [
+        1839
+      ],
+      "next_action": "归为执行环境失败；没有证据证明技能选择错误。"
+    },
+    {
+      "triage_id": "T09",
+      "task_id": "task_6f2d7bfdb05b46529f3a304805736c2c",
+      "reasons": [
+        "top10_tool_failures"
+      ],
+      "classification": "needs_more_evidence",
+      "root_cause": "errors_without_final_task_result",
+      "failure_stage": "unknown",
+      "outcome": "unknown",
+      "source_message_ids": [],
+      "next_action": "需要最终交付与三项目标逐项验收。"
+    },
+    {
+      "triage_id": "T10",
+      "task_id": "task_3460dbb543b842b0b4613526d4b67412",
+      "reasons": [
+        "top10_tool_failures"
+      ],
+      "classification": "needs_more_evidence",
+      "root_cause": "timeouts_without_final_task_result",
+      "failure_stage": "unknown",
+      "outcome": "unknown",
+      "source_message_ids": [],
+      "next_action": "需要视频摘要或明确失败交付作为结局证据。"
+    },
+    {
+      "triage_id": "T11",
+      "task_id": "task_ce262b5ee0654c10a74af057e63331f5",
+      "reasons": [
+        "top10_tool_failures"
+      ],
+      "classification": "false_positive",
+      "root_cause": "tool_errors_recovered_before_complete_report",
+      "failure_stage": "unknown",
+      "outcome": "success",
+      "source_message_ids": [
+        1913
+      ],
+      "next_action": "工具错误候选误报；最终报告不等于路由失败。"
+    },
+    {
+      "triage_id": "T12",
+      "task_id": "task_9984a0c7927b4858b5b21d1a8de26a2f",
+      "reasons": [
+        "top10_tool_failures"
+      ],
+      "classification": "needs_more_evidence",
+      "root_cause": "blocked_tools_without_final_task_result",
+      "failure_stage": "unknown",
+      "outcome": "unknown",
+      "source_message_ids": [],
+      "next_action": "需要后续最终结果；blocked 本身不定罪。"
+    },
+    {
+      "triage_id": "T13",
+      "task_id": "task_dc27785f20924767b9e2384ee98d80f4",
+      "reasons": [
+        "top10_tool_failures"
+      ],
+      "classification": "false_positive",
+      "root_cause": "draft_delivered_and_source_intentionally_unchanged",
+      "failure_stage": "unknown",
+      "outcome": "success",
+      "source_message_ids": [
+        12264
+      ],
+      "next_action": "草稿交付且有字数与引用核对，不把过程错误算任务失败。"
+    },
+    {
+      "triage_id": "T14",
+      "task_id": "task_737f7ef1aac140889ead2700d589dd24",
+      "reasons": [
+        "top10_tool_failures"
+      ],
+      "classification": "needs_more_evidence",
+      "root_cause": "claimed_artifacts_not_independently_opened",
+      "failure_stage": "unknown",
+      "outcome": "unknown",
+      "source_message_ids": [],
+      "next_action": "历史产物需重新打开并做视觉验收；当前只有数值声明。"
+    },
+    {
+      "triage_id": "T15",
+      "task_id": "task_4a6da281dbcf4f6cb85ec9e84c7fb289",
+      "reasons": [
+        "top10_tool_failures"
+      ],
+      "classification": "needs_more_evidence",
+      "root_cause": "stopped_during_verification_without_delivery",
+      "failure_stage": "unknown",
+      "outcome": "unknown",
+      "source_message_ids": [],
+      "next_action": "需要后续交付或明确终止证据。"
+    },
+    {
+      "triage_id": "T16",
+      "task_id": "task_8bdb9ff60ef74e4cb4e8317c3a1c2d88",
+      "reasons": [
+        "top10_tool_failures"
+      ],
+      "classification": "needs_more_evidence",
+      "root_cause": "claimed_image_artifacts_not_independently_opened",
+      "failure_stage": "unknown",
+      "outcome": "unknown",
+      "source_message_ids": [],
+      "next_action": "历史图片需重新打开核对，不能只凭完成声明。"
+    },
+    {
+      "triage_id": "T17",
+      "task_id": "task_83b8db2d0be94ef7bb570c7a92f38f52",
+      "reasons": [
+        "top10_tool_failures"
+      ],
+      "classification": "needs_more_evidence",
+      "root_cause": "claimed_video_artifact_not_independently_opened",
+      "failure_stage": "unknown",
+      "outcome": "unknown",
+      "source_message_ids": [],
+      "next_action": "历史视频需重新打开核对，不能只凭完成声明。"
+    }
+  ]
+}
