@@ -122,7 +122,8 @@ class FeedbackService:
                review_status: str = "all", limit: int = 20, offset: int = 0,
                response_format: str = "markdown", priority: str | None = None,
                execution: str | None = None, has_tool_errors: bool | None = None,
-               has_observed_label: bool | None = None, sort: str = "priority") -> dict[str, Any] | str:
+               has_observed_label: bool | None = None, sort: str = "priority",
+               search: str | None = None) -> dict[str, Any] | str:
         if not 1 <= limit <= 100 or offset < 0:
             raise ValueError("limit must be 1..100 and offset must be >= 0")
         if review_status not in {"all", "pending", "reviewed"}:
@@ -135,6 +136,7 @@ class FeedbackService:
             raise ValueError("sort must be priority, source_time, or tool_errors")
         if response_format not in {"markdown", "json"}:
             raise ValueError("response_format must be markdown or json")
+        search = clean_text(search, "search", limit=200) or None
         where, params = [], []
         if agent:
             where.append("t.agent=?")
@@ -216,6 +218,10 @@ class FeedbackService:
                           "tool_error_count": len(errors), "cancellation_count": len(cancellations),
                           "selection_count": len(selections),
                           "assessment": assessment, "event_count": len(events)})
+        if search:
+            needle = search.casefold()
+            items = [item for item in items if needle in " ".join(
+                [item["goal"], item["task_id"], *item["selections"]]).casefold()]
         total = len(items)
         filtered = [item for item in items if (
             (priority is None or (item["priority"] is None if priority == "none" else item["priority"] == priority))
@@ -251,7 +257,7 @@ class FeedbackService:
                   "filters": {"agent": agent, "selection": selection, "review_status": review_status,
                               "priority": priority, "execution": execution,
                               "has_tool_errors": has_tool_errors, "has_observed_label": has_observed_label,
-                              "sort": sort},
+                              "sort": sort, "search": search},
                   "p3": summarize([item["assessment"] for item in filtered], truth), "items": page}
         return json.dumps(result, ensure_ascii=False, indent=2) if response_format == "json" else self._markdown(result)
 

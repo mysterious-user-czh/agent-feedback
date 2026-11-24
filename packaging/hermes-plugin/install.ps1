@@ -4,7 +4,8 @@ param(
     [string]$HermesBin = '',
     [string]$InstallRoot = 'D:\KimiData\agent-feedback',
     [string]$Python = 'python',
-    [switch]$NoAutoCollector
+    [switch]$NoAutoCollector,
+    [switch]$NoDesktopShortcut
 )
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
@@ -55,12 +56,20 @@ $wheel = Get-ChildItem (Join-Path $payload 'agent_feedback_local-*.whl') | Selec
 if (-not $wheel) { throw 'Bundled wheel is missing.' }
 & $venvPython -m pip install ("{0}[mcp]" -f $wheel.FullName)
 if ($LASTEXITCODE -ne 0) { throw 'Python dependency installation failed.' }
-& $venvPython -c "import agent_feedback; assert agent_feedback.__version__ == '0.11.2'"
+& $venvPython -c "import agent_feedback; assert agent_feedback.__version__ == '0.12.0'"
 if ($LASTEXITCODE -ne 0) { throw 'Installed package version verification failed.' }
 
 $contracts = Join-Path $InstallRoot 'contracts.json'
 Copy-Item (Join-Path $payload 'contracts.json') $contracts -Force
 foreach ($name in @('run-collector.ps1','start-auto-collector.ps1','stop-auto-collector.ps1','status-auto-collector.ps1')) {
+    Copy-Item (Join-Path $pluginRoot $name) (Join-Path $InstallRoot $name) -Force
+}
+$reviewSource = Join-Path $payload 'review-ui'
+if (-not (Test-Path $reviewSource)) { throw 'Bundled review-ui is missing.' }
+Copy-Item $reviewSource (Join-Path $InstallRoot 'review-ui') -Recurse -Force
+New-Item -ItemType Directory -Force (Join-Path $InstallRoot 'scripts') | Out-Null
+Copy-Item (Join-Path $pluginRoot 'scripts\*.ps1') (Join-Path $InstallRoot 'scripts') -Force
+foreach ($name in @('Start Agent Skills Feedback.cmd','Stop Agent Skills Feedback.cmd')) {
     Copy-Item (Join-Path $pluginRoot $name) (Join-Path $InstallRoot $name) -Force
 }
 $db = Join-Path $InstallRoot 'data\feedback.db'
@@ -92,17 +101,27 @@ try {
         $collectorStarted = $true
     }
     $manifest = @{
-        version = '0.11.2'; hermes_home = $HermesHome; hermes_bin = $HermesBin
+        version = '0.12.0'; hermes_home = $HermesHome; hermes_bin = $HermesBin
         install_root = $InstallRoot; database = $db; contracts = $contracts
         skill = $skillTarget; config_backup = $backup; auto_collector = (-not $NoAutoCollector)
         installed_at = (Get-Date).ToUniversalTime().ToString('o')
     } | ConvertTo-Json -Depth 3
     Set-Content (Join-Path $InstallRoot 'install.json') $manifest -Encoding UTF8
+    $desktop = [Environment]::GetFolderPath('Desktop')
+    $shortcutPath = Join-Path $desktop 'Agent Skills Feedback.lnk'
+    if (-not $NoDesktopShortcut -and -not (Test-Path $shortcutPath)) {
+        $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut($shortcutPath)
+        $shortcut.TargetPath = Join-Path $InstallRoot 'Start Agent Skills Feedback.cmd'
+        $shortcut.WorkingDirectory = $InstallRoot
+        $shortcut.Description = 'Open the local Agent Skills Feedback review UI'
+        $shortcut.Save()
+    }
     Write-Host ''
-    Write-Host 'agent-feedback 0.11.2 installed and MCP connection verified.' -ForegroundColor Green
+    Write-Host 'Agent Skills Feedback 0.12.0 installed and MCP connection verified.' -ForegroundColor Green
     Write-Host "Hermes Home: $HermesHome"
     Write-Host "Data: $db"
     Write-Host "Automatic collector: $(-not $NoAutoCollector)"
+    Write-Host "Review UI: $(Join-Path $InstallRoot 'Start Agent Skills Feedback.cmd')"
     Write-Host 'Restart the Hermes chat session to load the new Skill and tools.'
 } catch {
     if ($collectorStarted) { & (Join-Path $InstallRoot 'stop-auto-collector.ps1') -InstallRoot $InstallRoot 2>$null | Out-Null }

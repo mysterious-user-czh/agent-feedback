@@ -2,12 +2,14 @@
 
 ## 发布包
 
-从 [v0.11.2 Release](https://github.com/mysterious-user-czh/agent-feedback/releases/tag/v0.11.2) 选择：
+从 [v0.12.0 Release](https://github.com/mysterious-user-czh/agent-skills-feedback/releases/tag/v0.12.0) 选择：
 
-- Hermes Windows 用户：`hermes-agent-feedback-plugin-v0.11.2.zip`，按包内 README 安装；
-- 通用宿主或开发者：`agent-feedback-v0.11.2.zip`，包含源码、示例和脱敏评估；
-- 只需要 Python 包：`agent_feedback_local-0.11.2-py3-none-any.whl`；
-- 只需要 Skill 引导：`agent-feedback.skill`，但它不包含 Python 核心和 MCP，不能单独完成安装。
+- Hermes Windows 用户：`hermes-agent-feedback-plugin-v0.12.0.zip`，包含审核台与双击启动器，按包内 README 安装；
+- 通用宿主或开发者：使用 GitHub 的 Source code，包含源码、示例和脱敏评估；
+- 只需要 Python 包：`agent_feedback_local-0.12.0-py3-none-any.whl`；
+- 只需要 Skill 引导：使用源码中的 `skill/agent-feedback/`，但它不包含 Python 核心和 MCP，不能单独完成安装。
+
+维护者可在项目环境运行 `.venv/Scripts/python scripts/build_release.py`，重新构建上述 wheel 与 Hermes 安装包；脚本会检查必需文件并确保安装包不夹带数据库。
 
 ## 核心与 MCP
 
@@ -22,7 +24,7 @@ python -m venv .venv
 
 Linux／macOS 使用 `.venv/bin/python`。将 `skill/agent-feedback` 复制到宿主 Agent 的 Skills 目录，并按该目录中的 `references/mcp-config.md` 注册同名 MCP server：`agent-feedback`。不要写成 `agent_feedback_mcp`。
 
-支持版本：当前包 0.11.2 的事件协议，Python ≥3.10，`mcp>=1.12,<3`。数据库默认 `~/.agent-feedback/feedback.db`，生产使用显式 `AGENT_FEEDBACK_DB`。旧版切段数据库不能直接复用。
+支持版本：当前包 0.12.0 的事件协议，Python ≥3.10，`mcp>=1.12,<3`。数据库默认 `~/.agent-feedback/feedback.db`，生产使用显式 `AGENT_FEEDBACK_DB`。旧版切段数据库不能直接复用。
 
 ## Hermes 自动采集
 
@@ -33,13 +35,19 @@ agent-feedback --db <FEEDBACK_DB> --contracts <CONTRACTS_JSON> watch-hermes <HER
 
 默认排除子会话；重复运行零重复，老会话新增消息会补扫。每轮独立枚举源库并核对会话、消息、Skill 选择和结构化工具错误的双向差集；缺漏、额外记录或解析失败均不能报告成功。这是周期性只读采集，不是实时 hook，也不自动判断 routing 真值或最终产物质量。Windows 一键包的安装、状态、停止和保留数据升级见 `packaging/hermes-plugin/README.md`。
 
+## 本地人工审核台
+
+Windows 双击根目录 `Start Agent Skills Feedback.cmd`，或在 PowerShell 运行 `scripts/start-review.ps1`。可用 `-Database <路径>` 和 `-Port <端口>` 覆盖默认值，`-NoBrowser` 只启动服务。双击 `Stop Agent Skills Feedback.cmd` 停止审核网页。启动器只管理自己记录的进程，不停止 Hermes 或自动采集器。
+
+真实审核模式不依赖 Node.js。`review-ui/` 的 Node 启动器主要用于隔离演示与开发；生产审核仍由 `agent_feedback.review_server` 提供静态页面和本机 API。
+
 ## 可选本地 MLflow
 
 MLflow 不是核心或 MCP 的运行依赖。只在项目虚拟环境中按需安装：
 
 ```bash
 .venv/Scripts/python -m pip install -e ".[mlflow]"
-agent-feedback track-skillup <RESULT_JSON> --tracking-uri file:///<LOCAL_TRACKING_DIR> --artifact-root <LOCAL_ARTIFACT_DIR> --experiment agent-feedback --code-version 0.11.2 --metadata '{"candidate":"after","config_hash":"<HASH>","skill_tree_hash":"<HASH>","model_version":"unknown"}'
+agent-feedback track-skillup <RESULT_JSON> --tracking-uri file:///<LOCAL_TRACKING_DIR> --artifact-root <LOCAL_ARTIFACT_DIR> --experiment agent-feedback --code-version 0.12.0 --metadata '{"candidate":"after","config_hash":"<HASH>","skill_tree_hash":"<HASH>","model_version":"unknown"}'
 ```
 
 只允许 `file:` 跟踪地址，拒绝 http／https 和远程 `file://host/...`，避免误上传。保存内容为脱敏状态、指标、版本字段和布尔 judge 检查，不保存 prompt、response、transcript、session_id、原始错误或凭据。token 未采集时保持 unknown，不把 0 当成零消耗。

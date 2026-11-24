@@ -86,7 +86,10 @@ CREATE TABLE IF NOT EXISTS schema_metadata (
 INSERT OR IGNORE INTO label_revisions
 SELECT 'legacy_' || task_id, task_id, outcome, failure_stage, expected_selection,
        comment, source, source, 'Legacy current label migration', updated_at
-FROM labels;
+FROM labels
+WHERE NOT EXISTS (
+  SELECT 1 FROM label_revisions existing WHERE existing.task_id = labels.task_id
+);
 """
 
 

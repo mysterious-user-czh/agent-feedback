@@ -1,4 +1,4 @@
-# Hermes agent-feedback 一键安装包（0.11.2）
+# Agent Skills Feedback · Hermes Windows 一键安装包（0.12.0）
 
 ## 安装
 
@@ -12,7 +12,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1
 
 - Hermes Home：现有 `HERMES_HOME`，否则 `%LOCALAPPDATA%\hermes`；
 - 独立运行环境和数据库：`D:\KimiData\agent-feedback`；
-- MCP 名称：`agent-feedback`。
+- MCP 名称：`agent-feedback`（保留原技术标识，避免破坏现有配置）。
 
 首次安装需要 Python 3.10+，并需要联网获取 wheel 的依赖。脚本不覆盖已有同名 Skill 或 MCP；注册前备份 `config.yaml`，注册通过 Hermes 官方 `mcp add` 完成，不直接改写 YAML。
 
@@ -22,7 +22,13 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1 -HermesBin "C:\path\to\hermes.exe"
 ```
 
-其他可选参数：`-HermesHome <目录>`、`-InstallRoot <目录>`、`-Python <python路径>`。只需 MCP 手动采集时，可加 `-NoAutoCollector`。
+其他可选参数：`-HermesHome <目录>`、`-InstallRoot <目录>`、`-Python <python路径>`。只需 MCP 手动采集时，可加 `-NoAutoCollector`；不创建桌面快捷方式时，加 `-NoDesktopShortcut`。
+
+## 打开人工审核台
+
+安装成功后，双击桌面的 **Agent Skills Feedback**，或安装目录中的 `Start Agent Skills Feedback.cmd`。启动器读取本包 `install.json` 中的真实反馈库，服务就绪后自动打开浏览器；重复双击不会重复启动。
+
+关闭审核台：双击 `Stop Agent Skills Feedback.cmd`。这只停止审核网页，不停止后台采集器，也不删除反馈数据。网页仅监听 `127.0.0.1`，不会公开到局域网或互联网。发布包必须把 `review-ui/` 放在 `payload/review-ui/`，并包含根目录两个 `.cmd` 与 `scripts/` 下两个启动／停止脚本。
 
 ## 默认自动采集
 

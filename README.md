@@ -1,8 +1,10 @@
-# agent-feedback
+# Agent Skills Feedback
 
-本地优先的 Agent Skill 使用反馈与证据复核工具。它记录技能选择、工具执行、产物验证、进程退出和人工复核结论，帮助回答“这次为什么失败、应该检查哪里”。
+仓库名：`agent-skills-feedback`。本地优先的 Agent Skill 使用反馈与证据复核工具。它记录技能选择、工具执行、产物验证、进程退出和人工复核结论，帮助回答“这次为什么失败、应该检查哪里”。
 
-当前版本：**0.11.2**。本版修正公开示例、报告样例、证据链接和文档结构；核心检测逻辑延续 0.11.1。
+> 为保持现有安装兼容，Python 包、命令、Skill 目录和 MCP 注册名仍使用 `agent-feedback`；变更的是项目展示名与 GitHub 仓库名。
+
+当前版本：**0.12.0**。新增本机人工审核台、全库搜索、静态文件白名单、Windows 双击启动与桌面快捷方式；项目展示名改为 Agent Skills Feedback，原有技术标识保持兼容。
 
 项目提供面向多 Agent 的开放事件协议和通用 `SessionResult` 导入。**目前完成真实宿主验收的是 Hermes**；确定性参考 engine 只证明接口可复用，不是第二个真实 LLM Agent。
 
@@ -12,7 +14,7 @@
 - 只读导入 Hermes `state.db`，支持老会话增量补扫和重复导入去重。
 - 分别报告 routing、execution、artifact、exit、outcome，证据不足时输出 `unknown`。
 - 将已复核失败转成 skill-up 回归用例，并可选写入本地 MLflow。
-- 提供 Hermes Windows 一键安装包、通用 Skill 引导包和 Python wheel。
+- 提供本机人工审核台、Windows 双击启动器、Hermes 一键安装包、通用 Skill 引导包和 Python wheel。
 
 ## 明确边界
 
@@ -26,7 +28,7 @@
 
 ### Hermes Windows 一键包
 
-从 [v0.11.2 Release](https://github.com/mysterious-user-czh/agent-feedback/releases/tag/v0.11.2) 下载 `hermes-agent-feedback-plugin-v0.11.2.zip`，解压后在包目录运行：
+从 [v0.12.0 Release](https://github.com/mysterious-user-czh/agent-skills-feedback/releases/tag/v0.12.0) 下载 `hermes-agent-feedback-plugin-v0.12.0.zip`，解压后在包目录运行：
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1
@@ -37,8 +39,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1
 ### 从源码安装
 
 ```bash
-git clone https://github.com/mysterious-user-czh/agent-feedback.git
-cd agent-feedback
+git clone https://github.com/mysterious-user-czh/agent-skills-feedback.git
+cd agent-skills-feedback
 python -m venv .venv
 .venv/Scripts/python -m pip install -e ".[mcp]"
 ```
@@ -49,6 +51,18 @@ Linux／macOS 使用 `.venv/bin/python`。这是面向开发者的 editable 安�
 
 - `AGENT_FEEDBACK_DB`：反馈数据库路径；
 - `AGENT_FEEDBACK_CONTRACTS`：合约 JSON，例如 `examples/contracts.json`。
+
+## 本地人工审核台
+
+Windows 完成源码安装后，双击根目录的 `Start Agent Skills Feedback.cmd`。启动器读取 `AGENT_FEEDBACK_DB`，未设置时读取 Hermes 一键包的 `install.json`，最后尝试 `~/.agent-feedback/feedback.db`；不会创建或覆盖真实数据库。服务就绪后自动打开 `http://localhost:7100/`，重复双击会复用已有服务。
+
+也可以在 PowerShell 指定数据库和端口：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\start-review.ps1 -Database "D:\path\feedback.db" -Port 7100
+```
+
+双击 `Stop Agent Skills Feedback.cmd` 停止由启动器管理的服务。审核台只监听本机，提供队列、证据详情、三类人工结论、修订历史和前后对照；不需要 Node.js 或公开部署。`review-ui/` 另保留 `npm run dev` 演示模式，默认使用隔离演示库，不用于真实审核。
 
 ## 最小工作流
 
@@ -104,7 +118,7 @@ agent-feedback --db data/feedback.db --contracts examples/contracts.json watch-h
 .venv/Scripts/python tests/test_mcp_stdio.py
 ```
 
-0.11.2 发布前实测：**82/82 unittest 通过**，独立 MCP stdio 4 工具全链路通过，公开基础示例实际运行通过并重新生成报告样例。
+0.12.0 发布前实测：**90/90 unittest 通过**，独立 MCP stdio 4 工具全链路通过；审核台已在浏览器验证三类写回、全库搜索、前后对照和窄屏布局，Windows 启动器已验证真实库连接、重复启动复用与停止。
 
 历史验收不冒充当前泛化结论：
 

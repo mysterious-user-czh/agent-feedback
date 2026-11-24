@@ -10,6 +10,10 @@ dist/
 examples/demo.db
 # Validation evidence may contain credentials, raw queries, session IDs and absolute paths.
 validation/
+logs/
 *.auth.json
 auth.json
 .env
+review-server-process.json
+review-server-output.log
+review-server-error.log

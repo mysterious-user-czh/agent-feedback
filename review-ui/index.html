@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Agent Skills Feedback · 本地审核台</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <svg class="svg-defs" aria-hidden="true">
+    <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M4 4h16v16H4zM4 14h4l2 3h4l2-3h4"/></symbol>
+    <symbol id="i-compare" viewBox="0 0 24 24"><path d="M8 7h12m0 0-3-3m3 3-3 3M16 17H4m0 0 3 3m-3-3 3-3"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 6v5h-5M4 18v-5h5M18.5 9A7 7 0 0 0 6 6.5L4 11m16 2-2 4.5A7 7 0 0 1 5.5 15"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v5h5M9 13h6M9 17h6"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6zM9 12l2 2 4-5"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4 3 20h18zM12 9v5m0 3v.1"/></symbol>
+  </svg>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark"><svg><use href="#i-shield"/></svg></span>
+      <div><strong>Agent Skills Feedback</strong><span>本地人工审核台</span></div>
+    </div>
+    <nav class="view-tabs" aria-label="工作区">
+      <button class="view-tab active" data-view="queue" aria-current="page"><svg><use href="#i-inbox"/></svg>审核队列</button>
+      <button class="view-tab" data-view="compare"><svg><use href="#i-compare"/></svg>前后对照</button>
+    </nav>
+    <div class="top-actions">
+      <span id="connection" class="connection"><i></i>正在连接</span>
+      <div class="global-progress" title="人工审核覆盖进度"><span>已审核</span><strong id="global-progress">— / —</strong></div>
+      <button id="refresh" class="icon-button" title="刷新数据" aria-label="刷新数据"><svg><use href="#i-refresh"/></svg></button>
+    </div>
+  </header>
+
+  <main>
+    <section id="queue-view" class="workspace" aria-label="审核工作区">
+      <aside class="queue-panel">
+        <div class="queue-heading">
+          <div><p class="eyebrow">REVIEW INBOX</p><h1>审核队列</h1></div>
+          <span id="queue-count" class="count-pill">—</span>
+        </div>
+        <div class="status-filter" role="group" aria-label="审核状态">
+          <button data-status="pending" class="active">待审核 <span id="pending-count">—</span></button>
+          <button data-status="reviewed">已审核</button>
+          <button data-status="all">全部</button>
+        </div>
+        <div class="filter-row">
+          <label class="search-box"><svg><use href="#i-search"/></svg><input id="search" type="search" placeholder="搜索目标、任务 ID 或 Skill" aria-label="搜索任务"></label>
+          <select id="priority-filter" aria-label="按优先级筛选">
+            <option value="">全部优先级</option><option value="P0">P0 · 已确认失败</option>
+            <option value="P1">P1 · 待复核信号</option><option value="P2">P2 · 执行规则</option>
+            <option value="none">无发现</option>
+          </select>
+        </div>
+        <div id="queue-error" class="inline-error" hidden></div>
+        <div id="task-list" class="task-list" aria-live="polite"><div class="list-loading"><span></span><span></span><span></span><p>正在读取审核任务…</p></div></div>
+        <button id="load-more" class="load-more" hidden>加载更多</button>
+        <div class="queue-foot"><span class="dot"></span>信号仅供复核，不代表自动定责</div>
+      </aside>
+
+      <section id="detail" class="detail-panel" aria-label="任务证据详情">
+        <div class="detail-loading"><span class="spinner"></span><p>正在读取任务证据…</p></div>
+      </section>
+
+      <aside class="review-panel">
+        <div class="review-heading"><p class="eyebrow">HUMAN DECISION</p><h2>人工结论</h2><span class="local-badge">写入本地</span></div>
+        <div id="current-label" class="current-label" hidden></div>
+        <form id="review-form">
+          <fieldset class="decision-list">
+            <legend>选择审核结果</legend>
+            <label class="decision-card danger"><input type="radio" name="decision" value="confirm" checked>
+              <span class="decision-check"></span><span><strong>确认问题</strong><small>证据支持任务或路由失败</small></span></label>
+            <label class="decision-card"><input type="radio" name="decision" value="false_positive">
+              <span class="decision-check"></span><span><strong>标记误报</strong><small>信号不成立，但不冒充任务成功</small></span></label>
+            <label class="decision-card"><input type="radio" name="decision" value="insufficient">
+              <span class="decision-check"></span><span><strong>证据不足</strong><small>保留未知，等待补充证据</small></span></label>
+          </fieldset>
+          <label id="stage-field" class="field"><span>失败阶段 <b>*</b></span>
+            <select id="failure-stage" name="failure_stage">
+              <option value="routing">路由 · 选错或漏选 Skill</option>
+              <option value="execution">执行 · Skill 执行过程失败</option>
+              <option value="environment">环境 · 依赖或运行环境失败</option>
+              <option value="requirements">需求 · 需求或验收定义问题</option>
+            </select>
+          </label>
+          <label class="field"><span>审核说明 <b>*</b><small id="comment-count">0 / 1800</small></span>
+            <textarea id="review-comment" name="comment" rows="5" maxlength="1800" placeholder="写下你核对到的事实、判断依据或需要补充的证据…" required></textarea>
+          </label>
+          <p class="revision-note">修改已有人工结论时，这段说明也会作为修订原因保留。</p>
+          <div id="save-error" class="inline-error" hidden></div>
+          <button id="save-label" class="primary-button" type="submit"><svg><use href="#i-check"/></svg><span>保存人工结论</span></button>
+          <button id="next-task" class="secondary-button" type="button">下一条待审<svg><use href="#i-arrow"/></svg></button>
+        </form>
+        <div class="trust-note"><svg><use href="#i-shield"/></svg><p>“误报”与“证据不足”均记为未知。只有具备客观产物验证时，才能标记任务成功。</p></div>
+      </aside>
+    </section>
+
+    <section id="compare-view" class="compare-view" hidden aria-label="修复前后对照">
+      <div class="compare-header">
+        <div><p class="eyebrow">BEFORE / AFTER</p><h1>修复前后对照</h1><p>手动选择同一问题的两次运行，对照路由、执行、产物与人工结论。</p></div>
+        <span class="evidence-badge"><svg><use href="#i-file"/></svg>证据来自任务记录</span>
+      </div>
+      <div class="compare-selectors">
+        <label><span class="compare-letter before">A</span><span>修复前任务</span><select id="compare-before" aria-label="选择修复前任务"></select></label>
+        <span class="compare-divider"><svg><use href="#i-compare"/></svg></span>
+        <label><span class="compare-letter after">B</span><span>修复后任务</span><select id="compare-after" aria-label="选择修复后任务"></select></label>
+      </div>
+      <div id="compare-content" class="compare-grid"></div>
+    </section>
+  </main>
+
+  <footer><span>Agent Skills Feedback 本地审核台</span><span id="data-scope">仅监听本机 · 隔离演示数据</span></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

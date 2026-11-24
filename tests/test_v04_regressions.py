@@ -129,7 +129,7 @@ class V04RegressionTests(unittest.TestCase):
     def test_version_metadata_is_aligned(self):
         project = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
         expected = project["project"]["version"]
-        self.assertEqual(expected, "0.11.2")
+        self.assertEqual(expected, "0.12.0")
         self.assertEqual(agent_feedback.__version__, expected)
         self.assertEqual(metadata.version("agent-feedback-local"), expected)
 
